@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: uhl_postgres_db
+    environment:
+      POSTGRES_USER: uhl_user
+      POSTGRES_PASSWORD: uhl_password
+      POSTGRES_DB: uhl_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./uhl_db_data:/var/lib/postgresql/data
+    networks:
+      - uhl_network
+
+volumes:
+  uhl_db_data:
+
+networks:
+  uhl_network:
