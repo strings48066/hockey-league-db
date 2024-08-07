@@ -51,5 +51,5 @@ def load_players_from_csv(file_path):
         conn.close()
 
 # Example usage
-csv_file_path = 'input.csv'
+csv_file_path = 'players.csv'
 load_players_from_csv(csv_file_path)

@@ -60,6 +60,21 @@ The database schema is defined in `sql_scripts/setup.sql`. This script creates t
     python3 python_scripts/bulk_upload_players.py /path/to/players.csv
     ```
 
+## Bulk Update Player Team Seasons
+
+1. **CSV Format**
+    Create a CSV file `player_team_seasons.csv` with the following columns:
+    ```csv
+    PlayerID,TeamID,SeasonID,IsCurrent
+    1,2,3,TRUE
+    2,3,4,FALSE
+    ```
+
+2. **Run Bulk Update Script**
+    ```sh
+    python3 python_scripts/bulk_update_player_team_seasons.py /path/to/player_team_seasons.csv
+    ```
+    
 ### Bulk Upload Player Statistics
 
 1. **CSV Format**

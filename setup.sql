@@ -29,7 +29,8 @@ CREATE TABLE PlayerTeamSeasons (
     IsCurrent BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (PlayerID) REFERENCES Players(PlayerID),
     FOREIGN KEY (TeamID) REFERENCES Teams(TeamID),
-    FOREIGN KEY (SeasonID) REFERENCES Seasons(SeasonID)
+    FOREIGN KEY (SeasonID) REFERENCES Seasons(SeasonID),
+    CONSTRAINT unique_player_team_season UNIQUE (PlayerID, TeamID, SeasonID)
 );
 
 CREATE TABLE PlayerTransfers (

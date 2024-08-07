@@ -50,5 +50,5 @@ def bulk_update_players(file_path):
         conn.close()
 
 # Example usage
-file_path = 'input.csv'
+file_path = 'players.csv'
 bulk_update_players(file_path)

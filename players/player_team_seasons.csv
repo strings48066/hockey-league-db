@@ -1,0 +1,3 @@
+PlayerID,TeamID,SeasonID,IsCurrent
+1,2,3,TRUE
+2,3,4,FALSE
