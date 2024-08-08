@@ -5,10 +5,16 @@ CREATE TABLE Seasons (
 
 CREATE TABLE Teams (
     TeamID SERIAL PRIMARY KEY,
-    SeasonID INT NOT NULL,
     Name VARCHAR(100) NOT NULL,
     City VARCHAR(100),
-    Coach VARCHAR(100),
+    Coach VARCHAR(100)
+);
+
+CREATE TABLE TeamSeasons (
+    TeamSeasonID SERIAL PRIMARY KEY,
+    TeamID INT NOT NULL,
+    SeasonID INT NOT NULL,
+    FOREIGN KEY (TeamID) REFERENCES Teams(TeamID),
     FOREIGN KEY (SeasonID) REFERENCES Seasons(SeasonID)
 );
 
