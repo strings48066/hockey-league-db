@@ -1,7 +1,7 @@
 import csv
 import psycopg2
 
-def load_games_from_csv(file_path):
+def load_seasons_from_csv(file_path):
     try:
         # Connect to the database
         conn = psycopg2.connect(
@@ -20,22 +20,19 @@ def load_games_from_csv(file_path):
         with open(file_path, mode='r') as file:
             csv_reader = csv.DictReader(file)
             for row in csv_reader:
-                insert_game_query = """
-                INSERT INTO Games (SeasonID, Date, HomeTeamID, AwayTeamID, HomeScore, AwayScore)
-                VALUES (%s, %s, %s, %s, %s, %s)
+                insert_season_query = """
+                INSERT INTO Seasons (Year)
+                VALUES (%s)
+                ON CONFLICT DO NOTHING;
                 """
-                cur.execute(insert_game_query, (
-                    row['SeasonID'],
-                    row['Date'],
-                    row['HomeTeamID'],
-                    row['AwayTeamID'],
-                    row['HomeScore'],
-                    row['AwayScore']
+                cur.execute(insert_season_query, (
+                    row['Year'],
                 ))
 
         # Commit the transaction
         conn.commit()
-        print("Games loaded successfully")
+
+        print("Seasons loaded successfully")
 
     except Exception as e:
         # Rollback the transaction in case of error
@@ -48,5 +45,5 @@ def load_games_from_csv(file_path):
         conn.close()
 
 if __name__ == "__main__":
-    csv_file_path = 'games.csv'
-    load_games_from_csv(csv_file_path)
+    csv_file_path = 'input.csv'
+    load_seasons_from_csv(csv_file_path)

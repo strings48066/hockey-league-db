@@ -104,3 +104,13 @@ CREATE TABLE TeamRecords (
     FOREIGN KEY (SeasonID) REFERENCES Seasons(SeasonID)
 );
 
+CREATE TABLE IF NOT EXISTS GameEvents (
+    EventID SERIAL PRIMARY KEY,
+    GameID INT NOT NULL,
+    PlayerID INT NOT NULL,
+    EventType VARCHAR(50) NOT NULL,  -- 'Goal', 'Assist', 'Penalty'
+    EventTime TIME NOT NULL,
+    PenaltyType VARCHAR(100),  -- Nullable, only used if EventType is 'Penalty'
+    FOREIGN KEY (GameID) REFERENCES Games(GameID),
+    FOREIGN KEY (PlayerID) REFERENCES Players(PlayerID)
+);
