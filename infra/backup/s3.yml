@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  BackupS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties: 
+      BucketName: !Sub 'uhl-db-bucket'
+      VersioningConfiguration: 
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - Id: "MoveToGlacier"
+            Status: "Enabled"
+            Transitions:
+              - TransitionInDays: 30
+                StorageClass: "GLACIER"
+
+  BackupBucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref BackupS3Bucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: "DenyUnencryptedUploads"
+            Effect: "Deny"
+            Principal: "*"
+            Action: "s3:PutObject"
+            Resource: !Sub '${BackupS3Bucket.Arn}/*'
+            Condition:
+              StringNotEquals:
+                s3:x-amz-server-side-encryption: "AES256"

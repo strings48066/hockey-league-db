@@ -44,52 +44,62 @@ The database schema is defined in `sql_scripts/setup.sql`. This script creates t
     ```
 
 ## Bulk Upload
+### Database Table Load Order
 
-### Bulk Upload Players
+When setting up a new database, follow this load order to respect foreign key dependencies:
 
-1. **CSV Format**
-    Create a CSV file `players.csv` with the following columns:
-    ```csv
-    FirstName,LastName,Position,JerseyNumber,Email
-    Alice,Johnson,Forward,9,alice.johnson@example.com
-    Bob,Smith,Defenseman,23,bob.smith@example.com
-    ```
+1. **Seasons**
+   - No dependencies. Create and load this first.
 
-2. **Run Bulk Upload Script**
-    ```sh
-    python3 python_scripts/bulk_upload_players.py /path/to/players.csv
-    ```
+2. **Teams**
+   - No dependencies. Create and load this second.
 
-## Bulk Update Player Team Seasons
+3. **Players**
+   - Depends on `Teams` (`TeamID`). Load after Teams.
 
-1. **CSV Format**
-    Create a CSV file `player_team_seasons.csv` with the following columns:
-    ```csv
-    PlayerID,TeamID,SeasonID,IsCurrent
-    1,2,3,TRUE
-    2,3,4,FALSE
-    ```
+4. **TeamSeasons**
+   - Links `Teams` to `Seasons` (`TeamID`, `SeasonID`). Load after both Teams and Seasons.
 
-2. **Run Bulk Update Script**
-    ```sh
-    python3 python_scripts/bulk_update_player_team_seasons.py /path/to/player_team_seasons.csv
-    ```
-    
-### Bulk Upload Player Statistics
+5. **Games**
+   - Depends on `Teams` and `Seasons` (`HomeTeamID`, `AwayTeamID`, `SeasonID`). Load after Teams and Seasons.
 
-1. **CSV Format**
-    Create a CSV file `player_statistics.csv` with the following columns:
-    ```csv
-    SeasonID,PlayerID,TeamID,GamesPlayed,Goals,Assists,PenaltyMinutes
-    2,1,5,12,5,10,6
-    2,2,5,10,3,7,4
-    ```
+6. **GameEvents**
+   - Depends on `Games` and `Players` (`GameID`, `PlayerID`). Load after Games and Players.
 
-2. **Run Bulk Upload Script**
-    ```sh
-    python3 python_scripts/bulk_upload_player_statistics.py /path/to/player_statistics.csv
-    ```
+By following this order, all foreign key constraints will be properly handled as you populate your database.
+
+# Backup and Restore Procedures
+
+## Backup Procedure
+
+1. **Start the Database**
+   - **Command**: `docker-compose up -d db`
+   - **Purpose**: Ensures the PostgreSQL container is running.
+
+2. **Run the Backup**
+   - **Command**: `docker-compose run backup`
+   - **Purpose**: Creates a timestamped backup file in the `./backup` directory.
+
+3. **Verify Backup**
+   - **Check**: Look for the `.backup` file in the `./backup` directory.
+
+4. **Store Backup Securely**
+   - **Option**: Upload to a secure location (e.g., AWS S3).
+
+## Restore Procedure
+
+1. **Ensure the Database is Running**
+   - **Command**: `docker-compose up -d db`
+
+2. **Run the Restore**
+   - **Command**: `docker-compose run restore`
+   - **Note**: Replace `your_backup_file.backup` with the specific backup file name.
+
+3. **Verify Restoration**
+   - **Check**: Ensure the data has been correctly restored in the database.
+
+4. **Cleanup**
+   - **Option**: Remove unnecessary backup files if needed.
 
 ## Contributing
-
 Feel free to open issues or submit pull requests with improvements.

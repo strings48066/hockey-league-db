@@ -7,7 +7,8 @@ CREATE TABLE Teams (
     TeamID SERIAL PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
     City VARCHAR(100),
-    Coach VARCHAR(100)
+    Coach VARCHAR(100),
+    UNIQUE (Name, City)  -- Composite unique constraint to ensure the combination of Name and City is unique
 );
 
 CREATE TABLE TeamSeasons (
@@ -24,7 +25,9 @@ CREATE TABLE Players (
     LastName VARCHAR(100) NOT NULL,
     Position VARCHAR(50),
     JerseyNumber INT,
-    Email VARCHAR(100) UNIQUE
+    Email VARCHAR(100) UNIQUE,
+    TeamID INT,  -- Foreign key to Teams table
+    FOREIGN KEY (TeamID) REFERENCES Teams(TeamID)
 );
 
 CREATE TABLE PlayerTeamSeasons (
@@ -55,9 +58,8 @@ CREATE TABLE Games (
     SeasonID INT NOT NULL,
     Date DATE NOT NULL,
     Time VARCHAR(100) NOT NULL,
-    ref1 VARCHAR(100) NOT NULL,
-    ref2 VARCHAR(100) NOT NULL,
-    gamelink VARCHAR(100) NOT NULL,
+    ref1 VARCHAR(100),
+    ref2 VARCHAR(100),
     HomeTeamID INT NOT NULL,
     AwayTeamID INT NOT NULL,
     HomeScore INT,

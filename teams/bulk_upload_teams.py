@@ -23,7 +23,7 @@ def load_teams_from_csv(file_path):
                 insert_team_query = """
                 INSERT INTO Teams (Name, City, Coach)
                 VALUES (%s, %s, %s)
-                ON CONFLICT (Name) DO UPDATE
+                ON CONFLICT (Name, City) DO UPDATE
                 SET City = EXCLUDED.City,
                     Coach = EXCLUDED.Coach;
                 """
@@ -48,5 +48,5 @@ def load_teams_from_csv(file_path):
         conn.close()
 
 if __name__ == "__main__":
-    csv_file_path = '/path/to/teams.csv'
+    csv_file_path = 'input.csv'
     load_teams_from_csv(csv_file_path)

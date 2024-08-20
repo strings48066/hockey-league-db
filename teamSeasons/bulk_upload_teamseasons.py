@@ -23,6 +23,7 @@ def load_team_seasons_from_csv(file_path):
                 insert_team_season_query = """
                 INSERT INTO TeamSeasons (TeamID, SeasonID)
                 VALUES (%s, %s)
+                ON CONFLICT DO NOTHING;
                 """
                 cur.execute(insert_team_season_query, (
                     row['TeamID'],
@@ -31,7 +32,8 @@ def load_team_seasons_from_csv(file_path):
 
         # Commit the transaction
         conn.commit()
-        print("Team seasons loaded successfully")
+
+        print("TeamSeasons loaded successfully")
 
     except Exception as e:
         # Rollback the transaction in case of error
@@ -44,5 +46,5 @@ def load_team_seasons_from_csv(file_path):
         conn.close()
 
 if __name__ == "__main__":
-    csv_file_path = '/path/to/team_seasons.csv'
+    csv_file_path = 'input.csv'
     load_team_seasons_from_csv(csv_file_path)

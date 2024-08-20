@@ -3,9 +3,9 @@ services:
     image: postgres:latest
     container_name: uhl_postgres_db
     environment:
-      POSTGRES_USER: uhl_user
-      POSTGRES_PASSWORD: uhl_password
-      POSTGRES_DB: uhl_db
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     volumes:
@@ -13,8 +13,38 @@ services:
     networks:
       - uhl_network
 
+  backup:
+    image: postgres:latest
+    container_name: uhl_backup
+    networks:
+      - uhl_network
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      TZ: America/New_York
+    volumes:
+      - ./backup:/backup
+    entrypoint: >
+      /bin/sh -c "pg_dump -U ${POSTGRES_USER} -h uhl_postgres_db -d ${POSTGRES_DB} -F c -f /backup/uhl_db_backup_$(TZ=America/New_York date +%Y%m%d%H%M%S).backup && echo 'Backup completed'"
+    depends_on:
+      - db
+
+  restore:
+    image: postgres:latest
+    container_name: uhl_restore
+    networks:
+      - uhl_network
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./backup:/backup
+    entrypoint: ["/bin/sh", "-c", "pg_restore -U ${POSTGRES_USER} -h uhl_postgres_db -d ${POSTGRES_DB} -v /backup/uhl_db_backup_20240819225558.backup && echo 'Restore completed'"]
+    depends_on:
+      - db
+    restart: no
+
 volumes:
   uhl_db_data:
+  backup:
 
 networks:
   uhl_network:
