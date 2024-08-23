@@ -96,6 +96,22 @@ CREATE TABLE PlayerStatistics (
     FOREIGN KEY (TeamID) REFERENCES Teams(TeamID)
 );
 
+CREATE TABLE GoalieStatistics (
+    StatisticID SERIAL PRIMARY KEY,
+    PlayerID INT NOT NULL,
+    SeasonID INT NOT NULL,
+    TeamID INT NOT NULL,
+    GamesPlayed INT DEFAULT 0,
+    GoalsAgainst INT DEFAULT 0,
+    Wins INT DEFAULT 0,
+    Losses INT DEFAULT 0,
+    Shutouts INT DEFAULT 0,
+    GAA DECIMAL(5, 2), -- Goals Against Average
+    FOREIGN KEY (PlayerID) REFERENCES Players(PlayerID),
+    FOREIGN KEY (SeasonID) REFERENCES Seasons(SeasonID),
+    FOREIGN KEY (TeamID) REFERENCES Teams(TeamID)
+);
+
 CREATE TABLE TeamRecords (
     RecordID SERIAL PRIMARY KEY,
     TeamID INT NOT NULL,
