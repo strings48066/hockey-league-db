@@ -1,5 +1,8 @@
+**/credentials.json
 uhl_db_data/
 venv
 **/input.csv
 **/*.backup
 .env
+**/token.json
+**/game_output.json
