@@ -6,3 +6,7 @@ venv
 .env
 **/token.json
 **/game_output.json
+**/output.json
+**/input.json
+**/google-creds.json
+
