@@ -50,40 +50,40 @@ def getRange(range_name):
         return pd.DataFrame()  
 
 def format_players(df):
-    if df.empty:
-        return []
-    # Ensure correct slicing based on actual column structure
-    players_df = df.iloc[:, :].copy()  # Adjust this slice if needed
-    
-    if len(players_df.columns) == 7:
-        players_df.columns = ["id", "FirstName", "Lastname", "Position", "JerseyNum", "Email", "TeamId"]
-        players_df = players_df.drop(columns=["Email"])  # Remove the Email column
-        return players_df[["id", "FirstName", "Lastname", "Position", "JerseyNum", "TeamId"]].to_dict(orient='records')
-    else:
-        raise ValueError(f"Expected 7 columns for players, but got {len(players_df.columns)} columns")
+    # Assuming df has columns: ["id", "FirstName", "Lastname", "Position", "Email", "Team", "SeasonID"]
+    df.columns = ["id", "FirstName", "Lastname", "Email"]
+    return df[["id", "FirstName", "Lastname"]].to_dict(orient='records')
+
+def format_season(df):
+    df.columns = ["id", "Team", "JerseyNum", "Position", "GP", "G", "A", "PTS", "PIM", "GWG", "GS"]
+    return df.to_dict(orient='records')
 
 def main():
     input_path = "player_template.json"
     output_path = "output.json"
-    range_players = "players!A1:G48"
+    range_players = "players!A1:D49"
+    range_season = "players!E1:O49"
+    
     df_players = getRange(range_players)
-    print(df_players)
-    players = format_players(df_players) 
+    df_season = getRange(range_season)
     
-    # with open(input_path, 'r') as json_file:
-    #     data = json.load(json_file)
+    players = format_players(df_players)
+    seasons = format_season(df_season)
     
-    data = players 
-    # # Ensure data is a dictionary
-    # if isinstance(data, list):
-    #     data = data[0]  # Assuming the first element is the dictionary you need
+    # Combine players with their respective seasons based on index
+    combined_data = []
+    for i, player in enumerate(players):
+        player_record = {
+            "id": player["id"],
+            "firstName": player["FirstName"],
+            "lastName": player["Lastname"],
+            "Seasons": [seasons[i]] if i < len(seasons) else []
+        }
+        combined_data.append(player_record)
 
-    # #Template data
-    # data['id'] = player_id
-
-    # Write back to the JSON file
-    with open(output_path, 'w') as json_file:
-        json.dump(data, json_file, indent=4)
+    # Output the combined data to a JSON file
+    with open(output_path, 'w') as f:
+        json.dump(combined_data, f, indent=4)
 
 if __name__ == "__main__":
     main()
