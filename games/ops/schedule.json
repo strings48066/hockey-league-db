@@ -1,0 +1,1190 @@
+[
+    {
+        "id": "1",
+        "Date": "09-08-2024",
+        "Time": "7:45 PM",
+        "Home": "Chicago",
+        "Away": "Detroit",
+        "Ref1": "Denny Savage",
+        "Ref2": "Matt Brachel",
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "2",
+        "Date": "09-08-2024",
+        "Time": "8:45 PM",
+        "Home": "New York",
+        "Away": "Boston",
+        "Ref1": "Todd Driscoll",
+        "Ref2": "Tom Berlin",
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "3",
+        "Date": "09-15-2024",
+        "Time": "7:45 PM",
+        "Home": "Boston",
+        "Away": "Chicago",
+        "Ref1": "Mike Hrynik",
+        "Ref2": "Matt Schellenberg",
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "4",
+        "Date": "09-15-2024",
+        "Time": "8:45 PM",
+        "Home": "Detroit",
+        "Away": "New York",
+        "Ref1": "Matt Brachel",
+        "Ref2": "Todd Driscoll",
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "5",
+        "Date": "09-22-2024",
+        "Time": "7:45 PM",
+        "Home": "Detroit",
+        "Away": "Boston",
+        "Ref1": "Todd Driscoll",
+        "Ref2": "Justin Berlin",
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "6",
+        "Date": "09-22-2024",
+        "Time": "8:45 PM",
+        "Home": "Chicago",
+        "Away": "New York",
+        "Ref1": "Mike Hrynik",
+        "Ref2": "Steve Stringer",
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "7",
+        "Date": "09-29-2024",
+        "Time": "7:45 PM",
+        "Home": "Boston",
+        "Away": "New York",
+        "Ref1": "Todd Driscoll",
+        "Ref2": "Tom Berlin",
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "8",
+        "Date": "09-29-2024",
+        "Time": "8:45 PM",
+        "Home": "Detroit",
+        "Away": "Chicago",
+        "Ref1": "Denny Savage",
+        "Ref2": "Matt Brachel",
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "9",
+        "Date": "10-06-2024",
+        "Time": "7:45 PM",
+        "Home": "Chicago",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "10",
+        "Date": "10-06-2024",
+        "Time": "8:45 PM",
+        "Home": "New York",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "11",
+        "Date": "10-13-2024",
+        "Time": "7:45 PM",
+        "Home": "New York",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "12",
+        "Date": "10-13-2024",
+        "Time": "8:45 PM",
+        "Home": "Boston",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "13",
+        "Date": "10-20-2024",
+        "Time": "7:45 PM",
+        "Home": "Boston",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "14",
+        "Date": "10-20-2024",
+        "Time": "8:45 PM",
+        "Home": "Chicago",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "15",
+        "Date": "10-27-2024",
+        "Time": "7:45 PM",
+        "Home": "New York",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "16",
+        "Date": "10-27-2024",
+        "Time": "8:45 PM",
+        "Home": "Boston",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "17",
+        "Date": "11-03-2024",
+        "Time": "7:45 PM",
+        "Home": "Detroit",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "18",
+        "Date": "11-03-2024",
+        "Time": "8:45 PM",
+        "Home": "Chicago",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "19",
+        "Date": "11-10-2024",
+        "Time": "7:45 PM",
+        "Home": "Detroit",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "20",
+        "Date": "11-10-2024",
+        "Time": "8:45 PM",
+        "Home": "New York",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "21",
+        "Date": "11-17-2024",
+        "Time": "7:45 PM",
+        "Home": "Chicago",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "22",
+        "Date": "11-17-2024",
+        "Time": "8:45 PM",
+        "Home": "Detroit",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "23",
+        "Date": "11-24-2024",
+        "Time": "7:45 PM",
+        "Home": "New York",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "24",
+        "Date": "11-24-2024",
+        "Time": "8:45 PM",
+        "Home": "Boston",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "25",
+        "Date": "12-01-2024",
+        "Time": "7:45 PM",
+        "Home": "Boston",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "26",
+        "Date": "12-01-2024",
+        "Time": "8:45 PM",
+        "Home": "Chicago",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "27",
+        "Date": "12-08-2024",
+        "Time": "7:45 PM",
+        "Home": "New York",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "28",
+        "Date": "12-08-2024",
+        "Time": "8:45 PM",
+        "Home": "Boston",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "29",
+        "Date": "12-15-2024",
+        "Time": "7:45 PM",
+        "Home": "Chicago",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "30",
+        "Date": "12-15-2024",
+        "Time": "8:45 PM",
+        "Home": "Detroit",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "31",
+        "Date": "12-22-2024",
+        "Time": "7:45 PM",
+        "Home": "New York",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "32",
+        "Date": "12-22-2024",
+        "Time": "8:45 PM",
+        "Home": "Detroit",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "33",
+        "Date": "12-29-2024",
+        "Time": "7:45 PM",
+        "Home": "Chicago",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "34",
+        "Date": "12-29-2024",
+        "Time": "8:45 PM",
+        "Home": "Detroit",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "35",
+        "Date": "01-05-2025",
+        "Time": "7:45 PM",
+        "Home": "New York",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "36",
+        "Date": "01-05-2025",
+        "Time": "8:45 PM",
+        "Home": "Boston",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "37",
+        "Date": "01-12-2025",
+        "Time": "7:45 PM",
+        "Home": "Chicago",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "38",
+        "Date": "01-12-2025",
+        "Time": "8:45 PM",
+        "Home": "Boston",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "39",
+        "Date": "01-19-2025",
+        "Time": "7:45 PM",
+        "Home": "New York",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "40",
+        "Date": "01-19-2025",
+        "Time": "8:45 PM",
+        "Home": "Boston",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "41",
+        "Date": "01-26-2025",
+        "Time": "7:45 PM",
+        "Home": "Chicago",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "42",
+        "Date": "01-26-2025",
+        "Time": "8:45 PM",
+        "Home": "Detroit",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "43",
+        "Date": "02-02-2025",
+        "Time": "7:45 PM",
+        "Home": "Detroit",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "44",
+        "Date": "02-02-2025",
+        "Time": "8:45 PM",
+        "Home": "New York",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "45",
+        "Date": "02-16-2025",
+        "Time": "7:45 PM",
+        "Home": "Detroit",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "46",
+        "Date": "02-16-2025",
+        "Time": "8:45 PM",
+        "Home": "Chicago",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "47",
+        "Date": "02-23-2025",
+        "Time": "7:45 PM",
+        "Home": "Boston",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "48",
+        "Date": "02-23-2025",
+        "Time": "8:45 PM",
+        "Home": "New York",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "49",
+        "Date": "03-02-2025",
+        "Time": "7:45 PM",
+        "Home": "Boston",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "50",
+        "Date": "03-02-2025",
+        "Time": "8:45 PM",
+        "Home": "Detroit",
+        "Away": "Chicago",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "51",
+        "Date": "03-09-2025",
+        "Time": "7:45 PM",
+        "Home": "Chicago",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "52",
+        "Date": "03-09-2025",
+        "Time": "8:45 PM",
+        "Home": "New York",
+        "Away": "Detroit",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "53",
+        "Date": "03-16-2025",
+        "Time": "7:45 PM",
+        "Home": "Detroit",
+        "Away": "Boston",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    },
+    {
+        "id": "54",
+        "Date": "03-16-2025",
+        "Time": "8:45 PM",
+        "Home": "Chicago",
+        "Away": "New York",
+        "Ref1": null,
+        "Ref2": null,
+        "GameLink": "",
+        "Score": "",
+        "Played": "",
+        "Lineups": {
+            "Home": [],
+            "Away": []
+        },
+        "Goals": [
+            {}
+        ],
+        "Penalties": [
+            {}
+        ]
+    }
+]

@@ -9,4 +9,5 @@ venv
 **/output.json
 **/input.json
 **/google-creds.json
-
+**/output*
+**/.DS_STORE

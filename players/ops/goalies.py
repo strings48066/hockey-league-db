@@ -55,14 +55,14 @@ def format_players(df):
     return df[["id", "FirstName", "Lastname"]].to_dict(orient='records')
 
 def format_season(df):
-    df.columns = ["id", "Team", "JerseyNum", "Position", "GP", "G", "A", "PTS", "PIM", "GWG", "GS"]
+    df.columns = ["id", "Team", "Pos", "GP", "GS", "W", "L", "T", "GA", "GAA"]
     return df.to_dict(orient='records')
 
 def main():
     input_path = "player_template.json"
-    output_path = "output.json"
-    range_players = "players!A1:D49"
-    range_season = "players!E1:O49"
+    output_path = "output_goalies.json"
+    range_players = "goalies!A1:D5"
+    range_season = "goalies!E1:N5"
     
     df_players = getRange(range_players)
     df_season = getRange(range_season)

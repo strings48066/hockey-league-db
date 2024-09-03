@@ -60,51 +60,39 @@ def getRange(range_name):
         print(err)
         return pd.DataFrame()  # Return an empty DataFrame in case of error
 
-def format_game(df):
-    df.columns = ["SeasonId", "id", "Date", "Time", "Home", "Away", "HomeTeam", "AwayTeam", "HomeScore", "AwayScore", "Ref1", "Ref2"]
-    return df.to_dict(orient='records')
+def set_standings(df):
+    if len(df.columns) == 8:
+        df.columns = ["id", "Team", "W", "L", "T", "GF", "GA", "PIM", "Streak", "Home", "Away"]
+        df["id"] = range(1, len(df) + 1)
+        return df[["id", "Team", "W", "L", "T", "GF", "GA", "PIM", "Streak", "Home", "Away"]].to_dict(orient='records')
+    else:
+        raise ValueError(f"Expected 8 columns, but got {len(df.columns)} columns")
 
 def main():
-    # Dictionary mapping team IDs to team names
-    TEAM_NAMES = {
-        1: "New York",
-        2: "Detroit",
-        3: "Chicago",
-        4: "Boston"
-        # Add more mappings as needed
-    }
-    input_path = "game_template.json"
-    output_path = "schedule.json"
-    game_info_range = "games!A2:L55"  # Range for game info
+    input_path = "standings_template.json"
+    output_path = "output.json"
+    range_standings = "scoresheet!A1:N5"  # Example range for team 1
 
-    game_info = getRange(game_info_range)
-    print(game_info)
-    games = format_game(game_info)
+    standings = getRange(range_standings)
+    print(standings)
 
-    combined_data = []
-    for i, game in enumerate(games):
-        game_record = {
-            "id": game["id"],
-            "Date": game["Date"],
-            "Time": game["Time"],
-            "Home": game["HomeTeam"],
-            "Away": game["AwayTeam"],
-            "Ref1": game["Ref1"],
-            "Ref2": game["Ref2"],
-            "GameLink": "",
-            "Score": "",
-            "Played": "",
-            "Lineups": {
-                "Home": [],
-                "Away": []
-            },
-            "Goals": [{}],
-            "Penalties": [{}]
-        }
-        combined_data.append(game_record)
+    with open(input_path, 'r') as json_file:
+        data = json.load(json_file)
+
+    data['Lineups']['Home'] = df_home
+    data['Lineups']['Away'] = df_away
+    data['Goals'] = goals
+    #data['Penalties'] = penalties
+    data['id'] = game_id
+    data['Date'] = game_date
+    data['Home'] = game_home
+    data['Away'] = game_away
+    data['Time'] = game_time
+    data['Referee1'] = game_ref1
+    data['Referee2'] = game_ref2
 
     with open(output_path, 'w') as json_file:
-        json.dump(combined_data, json_file, indent=4)
+        json.dump(data, json_file, indent=4)
 
 if __name__ == "__main__":
     main()
