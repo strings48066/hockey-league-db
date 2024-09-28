@@ -2,133 +2,1972 @@
     {
         "id": "1",
         "Date": "09-08-2024",
-        "Time": "7:45 PM",
         "Home": "Chicago",
         "Away": "Detroit",
-        "Ref1": "Denny Savage",
-        "Ref2": "Matt Brachel",
-        "GameLink": "",
-        "Score": "",
-        "Played": "",
+        "Time": "7:45",
+        "Ref1": "Matt Brachel",
+        "Ref2": " ",
+        "GameLink": "/gameSummary/0",
+        "Score": "Chicago 2 - 1 Detroit",
+        "Played": "Y",
         "Lineups": {
-            "Home": [],
-            "Away": []
+            "Home": [
+                {
+                    "id": 1,
+                    "name": "Justin Berlin",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "2",
+                    "a": "0",
+                    "pts": "2",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Matt Kish",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Todd Driscoll",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Scott Finley",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Dan Telfer",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "Doug Gardner",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Ken Kish",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Tom Berlin",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Brad Berk",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Dave Tremont",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Marc Motyl",
+                    "pos": "G",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Mike Hawkins",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "1",
+                    "pts": "1",
+                    "pim": "0"
+                }
+            ],
+            "Away": [
+                {
+                    "id": 1,
+                    "name": "Matt Shellenberg",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Rich Sommers",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "1",
+                    "a": "0",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Mike Mast",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Brian Berschbach",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Phil Serafini",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "John Marshall",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Don Button",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Todd Ralph",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Mike Hrynik",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Kevan Johnston",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Paul Becigneul",
+                    "pos": "G",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Duncan MacEachern",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                }
+            ]
         },
         "Goals": [
-            {}
+            {
+                "id": 1,
+                "Time": "38:29",
+                "Team": "Chicago",
+                "ScoredBy": "Justin Berlin",
+                "Assist1": null,
+                "Assist2": null
+            },
+            {
+                "id": 2,
+                "Time": "30:46",
+                "Team": "Chicago",
+                "ScoredBy": "Justin Berlin",
+                "Assist1": "Mike Hawkins",
+                "Assist2": null
+            },
+            {
+                "id": 3,
+                "Time": "7:08",
+                "Team": "Detroit",
+                "ScoredBy": "Rich Sommers",
+                "Assist1": "10",
+                "Assist2": "21"
+            }
         ],
         "Penalties": [
-            {}
+            {
+                "id": 1,
+                "Time": "14:23",
+                "Team": "Chicago",
+                "Player": "7",
+                "Infraction": "tripping",
+                "Minutes": "3"
+            },
+            {
+                "id": 2,
+                "Time": "1:00",
+                "Team": "Detroit",
+                "Player": "45",
+                "Infraction": "tripping",
+                "Minutes": "3"
+            }
         ]
     },
     {
         "id": "2",
         "Date": "09-08-2024",
-        "Time": "8:45 PM",
         "Home": "New York",
         "Away": "Boston",
+        "Time": "8:45",
         "Ref1": "Todd Driscoll",
         "Ref2": "Tom Berlin",
-        "GameLink": "",
-        "Score": "",
-        "Played": "",
+        "GameLink": "/gameSummary/1",
+        "Score": "New York 2 - 3 Boston",
+        "Played": "Y",
         "Lineups": {
-            "Home": [],
-            "Away": []
+            "Home": [
+                {
+                    "id": 1,
+                    "name": "Karl Messenger",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Mike Birch",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Doug Reich",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Mike Guillery",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Roger Gudobba",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "Lee Lair",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Bryan Smarch",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Todd Sweet",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Jack Digiovanni",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Matt York",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Kevin McEvoy",
+                    "pos": "G",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Tom Rolands",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                }
+            ],
+            "Away": [
+                {
+                    "id": 1,
+                    "name": "Matt Brachel",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Rob Brachel",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Brad Berlin",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Chad Shawver",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Jimmy White",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "Kyle Lawton",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Steve Stringer",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Rick Mooney",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Andy Shawver",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Don Smolenski",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Matt Elliot",
+                    "pos": "G",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Denny Savage",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                }
+            ]
         },
         "Goals": [
-            {}
+            {
+                "id": 1,
+                "Time": "25:13",
+                "Team": "NewYork",
+                "ScoredBy": "20",
+                "Assist1": "Mike Hawkins",
+                "Assist2": null
+            },
+            {
+                "id": 2,
+                "Time": "22:34",
+                "Team": "Boston",
+                "ScoredBy": "7",
+                "Assist1": "9",
+                "Assist2": "5"
+            },
+            {
+                "id": 3,
+                "Time": "17:25",
+                "Team": "Boston",
+                "ScoredBy": "4",
+                "Assist1": "9",
+                "Assist2": "23"
+            },
+            {
+                "id": 4,
+                "Time": "14:16",
+                "Team": "NewYork",
+                "ScoredBy": "77",
+                "Assist1": "89",
+                "Assist2": null
+            },
+            {
+                "id": 5,
+                "Time": "8:16",
+                "Team": "Boston",
+                "ScoredBy": "23",
+                "Assist1": "88",
+                "Assist2": "4"
+            }
         ],
         "Penalties": [
-            {}
+            {
+                "id": 1,
+                "Time": "2:07",
+                "Team": "Boston",
+                "Player": "23",
+                "Infraction": "tripping",
+                "Minutes": "3"
+            },
+            {
+                "id": 2,
+                "Time": "0:26",
+                "Team": "Boston",
+                "Player": "44",
+                "Infraction": "interference",
+                "Minutes": "3"
+            }
         ]
     },
     {
         "id": "3",
         "Date": "09-15-2024",
-        "Time": "7:45 PM",
         "Home": "Boston",
         "Away": "Chicago",
-        "Ref1": "Mike Hrynik",
+        "Time": "7:45",
+        "Ref1": "Mike Hyrnik",
         "Ref2": "Matt Schellenberg",
-        "GameLink": "",
-        "Score": "",
-        "Played": "",
+        "GameLink": "/gameSummary/2",
+        "Score": "Boston 1 - 3 Chicago",
+        "Played": "y",
         "Lineups": {
-            "Home": [],
-            "Away": []
+            "Home": [
+                {
+                    "id": 1,
+                    "name": "Matt Brachel",
+                    "pos": "F",
+                    "no": "9",
+                    "status": "",
+                    "g": "0",
+                    "a": "1",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Rob Brachel",
+                    "pos": "F",
+                    "no": "23",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Brad Berlin",
+                    "pos": "F",
+                    "no": "7",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Chad Shawver",
+                    "pos": "F",
+                    "no": "44",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Jimmy White",
+                    "pos": "D",
+                    "no": "88",
+                    "status": "",
+                    "g": "1",
+                    "a": "0",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "Kyle Lawton",
+                    "pos": "F",
+                    "no": "4",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Steve Stringer",
+                    "pos": "F",
+                    "no": "63",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Rick Mooney",
+                    "pos": "D",
+                    "no": "94",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Andy Shawver",
+                    "pos": "F",
+                    "no": "27",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Don Smolenski",
+                    "pos": "F",
+                    "no": "19",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Matt Elliot",
+                    "pos": "G",
+                    "no": "1",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Denny Savage",
+                    "pos": "D",
+                    "no": "15",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                }
+            ],
+            "Away": [
+                {
+                    "id": 1,
+                    "name": "Justin Berlin",
+                    "pos": "F",
+                    "no": "19",
+                    "status": "",
+                    "g": "1",
+                    "a": "1",
+                    "pts": "2",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Matt Kish",
+                    "pos": "D",
+                    "no": "4",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Todd Driscoll",
+                    "pos": "F",
+                    "no": "8",
+                    "status": "",
+                    "g": "0",
+                    "a": "1",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Scott Finley",
+                    "pos": "D",
+                    "no": "33",
+                    "status": "",
+                    "g": "1",
+                    "a": "0",
+                    "pts": "1",
+                    "pim": "3"
+                },
+                {
+                    "id": 5,
+                    "name": "Dan Telfer",
+                    "pos": "F",
+                    "no": "",
+                    "status": "scratch",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "Doug Gardner",
+                    "pos": "D",
+                    "no": "16",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Ken Kish",
+                    "pos": "F",
+                    "no": "14",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Tom Berlin",
+                    "pos": "F",
+                    "no": "7",
+                    "status": "",
+                    "g": "1",
+                    "a": "0",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Brad Berk",
+                    "pos": "F",
+                    "no": "5",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Dave Tremont",
+                    "pos": "F",
+                    "no": "22",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Marc Motyl",
+                    "pos": "G",
+                    "no": "1",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Mike Hawkins",
+                    "pos": "D",
+                    "no": "3",
+                    "status": "",
+                    "g": "0",
+                    "a": "1",
+                    "pts": "1",
+                    "pim": "0"
+                }
+            ]
         },
         "Goals": [
-            {}
+            {
+                "id": 1,
+                "Time": "37:46",
+                "Team": "Boston",
+                "ScoredBy": "Jimmy White",
+                "Assist1": "Matt Brachel",
+                "Assist2": null
+            },
+            {
+                "id": 2,
+                "Time": "30:37",
+                "Team": "Chicago",
+                "ScoredBy": "Tom Berlin",
+                "Assist1": "Todd Driscoll",
+                "Assist2": "Justin Berlin"
+            },
+            {
+                "id": 3,
+                "Time": "13:35",
+                "Team": "Chicago",
+                "ScoredBy": "Scott Finley",
+                "Assist1": null,
+                "Assist2": null
+            },
+            {
+                "id": 4,
+                "Time": "12:08",
+                "Team": "Chicago",
+                "ScoredBy": "Justin Berlin",
+                "Assist1": "Mike Hawkins",
+                "Assist2": null
+            }
         ],
         "Penalties": [
-            {}
+            {
+                "id": 1,
+                "Time": "33:37",
+                "Team": "Boston",
+                "Player": "Brad Berlin ",
+                "Infraction": "Tripping",
+                "Minutes": "3"
+            },
+            {
+                "id": 2,
+                "Time": "28:05",
+                "Team": "Chicago",
+                "Player": "Scott Finley",
+                "Infraction": "Tripping",
+                "Minutes": "3"
+            },
+            {
+                "id": 3,
+                "Time": "16:46",
+                "Team": "Boston",
+                "Player": "Brad Berlin ",
+                "Infraction": "Tripping",
+                "Minutes": "3"
+            }
         ]
     },
     {
         "id": "4",
         "Date": "09-15-2024",
-        "Time": "8:45 PM",
         "Home": "Detroit",
         "Away": "New York",
-        "Ref1": "Matt Brachel",
-        "Ref2": "Todd Driscoll",
-        "GameLink": "",
-        "Score": "",
-        "Played": "",
+        "Time": "8:45",
+        "Ref1": "Todd Driscoll",
+        "Ref2": "Matt Brachel",
+        "GameLink": "/gameSummary/3",
+        "Score": "Detroit 1 - 4 New York",
+        "Played": "y",
         "Lineups": {
-            "Home": [],
-            "Away": []
+            "Home": [
+                {
+                    "id": 1,
+                    "name": "Matt Schellenberg",
+                    "pos": "F",
+                    "no": "21",
+                    "status": "",
+                    "g": "0",
+                    "a": "1",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Rich Sommers",
+                    "pos": "F",
+                    "no": "4",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Mike Mast",
+                    "pos": "F",
+                    "no": "9",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Brian Berschbach",
+                    "pos": "F",
+                    "no": "7",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Phil Serafini",
+                    "pos": "D",
+                    "no": "",
+                    "status": "scratch",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "John Marshall",
+                    "pos": "D",
+                    "no": "15",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Don Button",
+                    "pos": "F",
+                    "no": "10",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Todd Ralph",
+                    "pos": "D",
+                    "no": "1",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Mike Hrynik",
+                    "pos": "F",
+                    "no": "9",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Kevan Johnston",
+                    "pos": "F",
+                    "no": "11",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Paul Becigneul",
+                    "pos": "G",
+                    "no": "96",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Duncan MacEachern",
+                    "pos": "F",
+                    "no": "25",
+                    "status": "",
+                    "g": "1",
+                    "a": "0",
+                    "pts": "1",
+                    "pim": "0"
+                }
+            ],
+            "Away": [
+                {
+                    "id": 1,
+                    "name": "Karl Messenger",
+                    "pos": "F",
+                    "no": "20",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Mike Birch",
+                    "pos": "D",
+                    "no": "77",
+                    "status": "",
+                    "g": "1",
+                    "a": "1",
+                    "pts": "2",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Doug Reich",
+                    "pos": "F",
+                    "no": "16",
+                    "status": "",
+                    "g": "1",
+                    "a": "1",
+                    "pts": "2",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Mike Guillery",
+                    "pos": "F",
+                    "no": "26",
+                    "status": "",
+                    "g": "1",
+                    "a": "0",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Roger Gudobba",
+                    "pos": "F",
+                    "no": "13",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "Lee Lair",
+                    "pos": "F",
+                    "no": "44",
+                    "status": "",
+                    "g": "1",
+                    "a": "0",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Bryan Smarch",
+                    "pos": "F",
+                    "no": "",
+                    "status": "scratch",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Todd Sweet",
+                    "pos": "F",
+                    "no": "89",
+                    "status": "",
+                    "g": "0",
+                    "a": "1",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Jack Digiovanni",
+                    "pos": "F",
+                    "no": "93",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Matt York",
+                    "pos": "F",
+                    "no": "36",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Mark Motyl",
+                    "pos": "G",
+                    "no": "1",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Brad Berlin",
+                    "pos": "D",
+                    "no": "",
+                    "status": "sub",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                }
+            ]
         },
         "Goals": [
-            {}
+            {
+                "id": 1,
+                "Time": "38:27",
+                "Team": "NewYork",
+                "ScoredBy": "Mike Guillery",
+                "Assist1": "Todd Sweet",
+                "Assist2": null
+            },
+            {
+                "id": 2,
+                "Time": "31:35",
+                "Team": "NewYork",
+                "ScoredBy": "Doug Reich",
+                "Assist1": null,
+                "Assist2": null
+            },
+            {
+                "id": 3,
+                "Time": "27:41",
+                "Team": "NewYork",
+                "ScoredBy": "Mike Birch",
+                "Assist1": null,
+                "Assist2": null
+            },
+            {
+                "id": 4,
+                "Time": "20:34",
+                "Team": "NewYork",
+                "ScoredBy": "Lee Lair",
+                "Assist1": "Doug Reich",
+                "Assist2": "Mike Birch"
+            },
+            {
+                "id": 5,
+                "Time": "17:32",
+                "Team": "Detroit",
+                "ScoredBy": "Duncan MacEachern",
+                "Assist1": "Matt Schellenberg",
+                "Assist2": null
+            }
         ],
-        "Penalties": [
-            {}
-        ]
+        "Penalties": []
     },
     {
         "id": "5",
         "Date": "09-22-2024",
-        "Time": "7:45 PM",
         "Home": "Detroit",
         "Away": "Boston",
+        "Time": "7:45",
         "Ref1": "Todd Driscoll",
         "Ref2": "Justin Berlin",
-        "GameLink": "",
-        "Score": "",
-        "Played": "",
+        "GameLink": "/gameSummary/4",
+        "Score": "Detroit 2 - 2 Boston",
+        "Played": "y",
         "Lineups": {
-            "Home": [],
-            "Away": []
+            "Home": [
+                {
+                    "id": 1,
+                    "name": "Mike Guillery",
+                    "pos": "F",
+                    "no": "21",
+                    "status": "sub",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Rich Sommers",
+                    "pos": "F",
+                    "no": "4",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Mike Mast",
+                    "pos": "F",
+                    "no": "9",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Brian Berschbach",
+                    "pos": "F",
+                    "no": "7",
+                    "status": "",
+                    "g": "1",
+                    "a": "0",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Phil Serafini",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "John Marshall",
+                    "pos": "D",
+                    "no": "15",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Don Button",
+                    "pos": "F",
+                    "no": "10",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Todd Ralph",
+                    "pos": "D",
+                    "no": "1",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Mike Hrynik",
+                    "pos": "F",
+                    "no": "9",
+                    "status": "",
+                    "g": "0",
+                    "a": "1",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Kevan Johnston",
+                    "pos": "F",
+                    "no": "11",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Paul Becigneul",
+                    "pos": "G",
+                    "no": "96",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Matt Kish",
+                    "pos": "F",
+                    "no": "0",
+                    "status": "sub",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                }
+            ],
+            "Away": [
+                {
+                    "id": 1,
+                    "name": "Matt Brachel",
+                    "pos": "F",
+                    "no": "9",
+                    "status": "",
+                    "g": "0",
+                    "a": "2",
+                    "pts": "2",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Rob Brachel",
+                    "pos": "F",
+                    "no": "23",
+                    "status": "scratch",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Brad Berlin",
+                    "pos": "F",
+                    "no": "7",
+                    "status": "",
+                    "g": "2",
+                    "a": "0",
+                    "pts": "2",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Chad Shawver",
+                    "pos": "F",
+                    "no": "44",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Jimmy White",
+                    "pos": "D",
+                    "no": "88",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "Kyle Lawton",
+                    "pos": "F",
+                    "no": "4",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Steve Stringer",
+                    "pos": "F",
+                    "no": "63",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Rick Mooney",
+                    "pos": "D",
+                    "no": "94",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "3"
+                },
+                {
+                    "id": 9,
+                    "name": "Andy Shawver",
+                    "pos": "F",
+                    "no": "27",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Don Smolenski",
+                    "pos": "F",
+                    "no": "19",
+                    "status": "",
+                    "g": "0",
+                    "a": "1",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Matt Elliot",
+                    "pos": "G",
+                    "no": "1",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Denny Savage",
+                    "pos": "D",
+                    "no": "15",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                }
+            ]
         },
         "Goals": [
-            {}
+            {
+                "id": 1,
+                "Time": "40:52",
+                "Team": "Boston",
+                "ScoredBy": "Brad Berlin",
+                "Asst1": "Matt Brachel",
+                "Asst2": null
+            },
+            {
+                "id": 2,
+                "Time": "25:27",
+                "Team": "Detroit",
+                "ScoredBy": "Brian Berschbach",
+                "Asst1": "19",
+                "Asst2": null
+            },
+            {
+                "id": 3,
+                "Time": "7:49",
+                "Team": "Detroit",
+                "ScoredBy": "19",
+                "Asst1": "Mike Hrynik",
+                "Asst2": null
+            },
+            {
+                "id": 4,
+                "Time": "4:54",
+                "Team": "Boston",
+                "ScoredBy": "Brad Berlin",
+                "Asst1": "Matt Brachel",
+                "Asst2": "Don Smolenski"
+            }
         ],
         "Penalties": [
-            {}
+            {
+                "id": 1,
+                "Time": "21:34",
+                "Team": "Boston",
+                "Player": "Rick Mooney",
+                "Infraction": "trip",
+                "Minutes": "3"
+            }
         ]
     },
     {
         "id": "6",
         "Date": "09-22-2024",
-        "Time": "8:45 PM",
         "Home": "Chicago",
         "Away": "New York",
-        "Ref1": "Mike Hrynik",
+        "Time": "8:45",
+        "Ref1": "Mike Hyrnik",
         "Ref2": "Steve Stringer",
-        "GameLink": "",
-        "Score": "",
-        "Played": "",
+        "GameLink": "/gameSummary/5",
+        "Score": "Chicago 2 - 0 New York",
+        "Played": "y",
         "Lineups": {
-            "Home": [],
-            "Away": []
+            "Home": [
+                {
+                    "id": 1,
+                    "name": "Justin Berlin",
+                    "pos": "F",
+                    "no": "19",
+                    "status": "",
+                    "g": "1",
+                    "a": "0",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Matt Kish",
+                    "pos": "D",
+                    "no": "4",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 3,
+                    "name": "Todd Driscoll",
+                    "pos": "F",
+                    "no": "8",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Scott Finley",
+                    "pos": "D",
+                    "no": "33",
+                    "status": "",
+                    "g": "0",
+                    "a": "1",
+                    "pts": "1",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Dan Telfer",
+                    "pos": "F",
+                    "no": "20",
+                    "status": "",
+                    "g": "1",
+                    "a": "1",
+                    "pts": "2",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "Doug Gardner",
+                    "pos": "D",
+                    "no": "16",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Ken Kish",
+                    "pos": "F",
+                    "no": "14",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Tom Berlin",
+                    "pos": "F",
+                    "no": "7",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Brad Berk",
+                    "pos": "F",
+                    "no": "5",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Dave Tremont",
+                    "pos": "F",
+                    "no": "22",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Marc Motyl",
+                    "pos": "G",
+                    "no": "1",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Mike Hawkins",
+                    "pos": "D",
+                    "no": "3",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                }
+            ],
+            "Away": [
+                {
+                    "id": 1,
+                    "name": "Karl Messenger",
+                    "pos": "F",
+                    "no": "20",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 2,
+                    "name": "Mike Birch",
+                    "pos": "D",
+                    "no": "77",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "3"
+                },
+                {
+                    "id": 3,
+                    "name": "Brian Berschbach",
+                    "pos": "F",
+                    "no": "57",
+                    "status": "sub",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 4,
+                    "name": "Mike Guillery",
+                    "pos": "F",
+                    "no": "26",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 5,
+                    "name": "Roger Gudobba",
+                    "pos": "F",
+                    "no": "13",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 6,
+                    "name": "Lee Lair",
+                    "pos": "F",
+                    "no": "44",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 7,
+                    "name": "Bryan Smarch",
+                    "pos": "F",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 8,
+                    "name": "Todd Sweet",
+                    "pos": "F",
+                    "no": "89",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 9,
+                    "name": "Jack Digiovanni",
+                    "pos": "F",
+                    "no": "93",
+                    "status": "scratch",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 10,
+                    "name": "Matt York",
+                    "pos": "F",
+                    "no": "36",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 11,
+                    "name": "Kevin McEvoy",
+                    "pos": "G",
+                    "no": "1",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                },
+                {
+                    "id": 12,
+                    "name": "Tom Rolands",
+                    "pos": "D",
+                    "no": "",
+                    "status": "",
+                    "g": "0",
+                    "a": "0",
+                    "pts": "0",
+                    "pim": "0"
+                }
+            ]
         },
         "Goals": [
-            {}
+            {
+                "id": 1,
+                "Time": "31:12",
+                "Team": "Chicago",
+                "ScoredBy": "Justin Berlin",
+                "Asst1": "Dan Telfer",
+                "Asst2": "null"
+            },
+            {
+                "id": 2,
+                "Time": "13:07",
+                "Team": "Chicago",
+                "ScoredBy": "Dan Telfer",
+                "Asst1": "Scott Finley",
+                "Asst2": null
+            }
         ],
         "Penalties": [
-            {}
+            {
+                "id": 1,
+                "Time": "36:23",
+                "Team": "NewYork",
+                "Player": "Mike Birch",
+                "Infraction": "tripping",
+                "Minutes": "3"
+            }
         ]
     },
     {

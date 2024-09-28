@@ -30,7 +30,7 @@ def getRange(range_name):
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                "credentials.json", SCOPES
+                "../../google-creds.json", SCOPES
             )
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
@@ -73,20 +73,22 @@ def format_goals(df):
         return []
     goals_df = df.iloc[:, :5].copy()  # Make a copy of the slice
     if len(goals_df.columns) == 5:
-        goals_df.columns = ["Time", "Team", "ScoredBy", "Assist1", "Assist2"]
+        goals_df.columns = ["Time", "Team", "ScoredBy", "Asst1", "Asst2"]
         goals_df.loc[:, "id"] = range(1, len(goals_df) + 1)  # Use .loc to set the new column
-        return goals_df[["id", "Time", "Team", "ScoredBy", "Assist1", "Assist2"]].to_dict(orient='records')
+        return goals_df[["id", "Time", "Team", "ScoredBy", "Asst1", "Asst2"]].to_dict(orient='records')
     else:
         raise ValueError(f"Expected 5 columns for goals, but got {len(goals_df.columns)} columns")
 
 def format_penalties(df):
     if df.empty:
         return []
-    penalties_df = df.iloc[:, 5:].copy()  # Make a copy of the slice
+    print("DataFrame before slicing for penalties:")
+    print(df)
+    penalties_df = df.iloc[:, :5].copy()  # Make a copy of the slice
     if len(penalties_df.columns) == 5:
-        penalties_df.columns = ["Time", "Team", "Player", "Penalty", "Duration"]
+        penalties_df.columns = ["Time", "Team", "Player", "Infraction", "Minutes"]
         penalties_df.loc[:, "id"] = range(1, len(penalties_df) + 1)  # Use .loc to set the new column
-        return penalties_df[["id", "Time", "Team", "Player", "Penalty", "Duration"]].to_dict(orient='records')
+        return penalties_df[["id", "Time", "Team", "Player", "Infraction", "Minutes"]].to_dict(orient='records')
     else:
         raise ValueError(f"Expected 5 columns for penalties, but got {len(penalties_df.columns)} columns")
 
@@ -95,16 +97,16 @@ def main():
     output_path = "game_output.json"
     range_name1 = "scoresheet!A3:H14"  # Example range for team 1
     range_name2 = "scoresheet!K3:R14"  # Example range for team 2
-    game_info_range = "gameinfo!A2:J2"  # Range for game info
-    goals_range = "scoresheet!A18:I34"  # Example range for goals
-    penalties_range = "scoresheet!J18:N34"  # Example range for penalties
+    game_info_range = "GameInfo!A2:J2"  # Range for game info
+    goals_range = "scoresheet!A18:E34"  # Example range for goals
+    penalties_range = "scoresheet!F18:J34"  # Example range for penalties
 
     game_info = getRange(game_info_range)
     df_team1 = getRange(range_name1)
     df_team2 = getRange(range_name2)
     df_goals = getRange(goals_range)
     df_penalties = getRange(penalties_range)
-    print(df_goals)
+
     game_id = game_info.iloc[0, 0]
     game_date = game_info.iloc[0, 1]
     game_home = game_info.iloc[0, 2]
@@ -112,25 +114,31 @@ def main():
     game_time = game_info.iloc[0, 4]
     game_ref1 = game_info.iloc[0, 5]
     game_ref2 = game_info.iloc[0, 6]
-
+    game_link = game_info.iloc[0, 7]
+    game_score = game_info.iloc[0, 8]
+    game_played = game_info.iloc[0, 9]
+    
     df_home = set_lineups(df_team1)
     df_away = set_lineups(df_team2)
     goals = format_goals(df_goals)
-    #penalties = format_penalties(df_penalties)
+    penalties = format_penalties(df_penalties)
     with open(input_path, 'r') as json_file:
         data = json.load(json_file)
 
     data['Lineups']['Home'] = df_home
     data['Lineups']['Away'] = df_away
     data['Goals'] = goals
-    #data['Penalties'] = penalties
+    data['Penalties'] = penalties
     data['id'] = game_id
     data['Date'] = game_date
     data['Home'] = game_home
     data['Away'] = game_away
     data['Time'] = game_time
-    data['Referee1'] = game_ref1
-    data['Referee2'] = game_ref2
+    data['Ref1'] = game_ref1
+    data['Ref2'] = game_ref2
+    data['GameLink'] = game_link
+    data['Score'] = game_score
+    data['Played'] = game_played
 
     with open(output_path, 'w') as json_file:
         json.dump(data, json_file, indent=4)

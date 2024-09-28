@@ -55,7 +55,7 @@ def format_players(df):
     return df[["id", "FirstName", "Lastname"]].to_dict(orient='records')
 
 def format_season(df):
-    df.columns = ["id", "Team", "Pos", "GP", "GS", "W", "L", "T", "GA", "GAA"]
+    df.columns = ["id", "Team", "Position", "GP", "GS", "W", "L", "T", "GA", "GAA"]
     return df.to_dict(orient='records')
 
 def main():

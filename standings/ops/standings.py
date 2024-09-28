@@ -30,7 +30,7 @@ def getRange(range_name):
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                "credentials.json", SCOPES
+                "../../google-creds.json", SCOPES
             )
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
@@ -61,38 +61,52 @@ def getRange(range_name):
         return pd.DataFrame()  # Return an empty DataFrame in case of error
 
 def set_standings(df):
-    if len(df.columns) == 8:
-        df.columns = ["id", "Team", "W", "L", "T", "GF", "GA", "PIM", "Streak", "Home", "Away"]
-        df["id"] = range(1, len(df) + 1)
-        return df[["id", "Team", "W", "L", "T", "GF", "GA", "PIM", "Streak", "Home", "Away"]].to_dict(orient='records')
+    if len(df.columns) == 12:
+        df.columns = ["id", "Team", "W", "L", "T", "P", "GF", "GA", "PIM", "Home", "Away", "Streak"]
+        return df[["id", "Team", "W", "L", "T", "P", "GF", "GA", "PIM", "Home", "Away", "Streak"]].to_dict(orient='records')
     else:
-        raise ValueError(f"Expected 8 columns, but got {len(df.columns)} columns")
+        raise ValueError(f"Expected 5 columns for standings, but got {len(df.columns)} columns")
 
 def main():
     input_path = "standings_template.json"
     output_path = "output.json"
-    range_standings = "scoresheet!A1:N5"  # Example range for team 1
+    range_standings = "standings!A2:L5"  # Example range for team 1
+    df_standings = getRange(range_standings)
+    
+    data_list = []
+    for index, row in df_standings.iterrows():
+        team_id = row[0]
+        team = row[1]
+        wins = row[2]
+        losses = row[3]
+        ties = row[4]
+        points = row[5]
+        goalsfor = row[6]
+        goalsagainst = row[7]
+        penaltyminutes = row[8]
+        homerecord = row[9]
+        awayrecord = row[10]
+        streak = row[11]
 
-    standings = getRange(range_standings)
-    print(standings)
+        data = {}
+        data['id'] = team_id
+        data['Team'] = team
+        data['W'] = wins
+        data['L'] = losses
+        data['T'] = ties
+        data['GF'] = goalsfor
+        data['GA'] = goalsagainst
+        data['PIM'] = penaltyminutes
+        data['Streak'] = streak
+        data['Home'] = homerecord
+        data['Away'] = awayrecord
 
-    with open(input_path, 'r') as json_file:
-        data = json.load(json_file)
-
-    data['Lineups']['Home'] = df_home
-    data['Lineups']['Away'] = df_away
-    data['Goals'] = goals
-    #data['Penalties'] = penalties
-    data['id'] = game_id
-    data['Date'] = game_date
-    data['Home'] = game_home
-    data['Away'] = game_away
-    data['Time'] = game_time
-    data['Referee1'] = game_ref1
-    data['Referee2'] = game_ref2
+        data_list.append(data)
 
     with open(output_path, 'w') as json_file:
-        json.dump(data, json_file, indent=4)
+        json.dump(data_list, json_file, indent=4)
+
+    print(f"Data has been written to {output_path}")
 
 if __name__ == "__main__":
     main()
