@@ -30,7 +30,7 @@ def getRange(range_name):
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                "credentials.json", SCOPES
+                "../../google-creds.json", SCOPES
             )
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
@@ -74,7 +74,7 @@ def main():
         # Add more mappings as needed
     }
     input_path = "game_template.json"
-    output_path = "schedule.json"
+    output_path = "output.json"
     game_info_range = "games!A2:L55"  # Range for game info
 
     game_info = getRange(game_info_range)
