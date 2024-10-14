@@ -39,7 +39,8 @@ function get_game_events(sourceSpreadsheetUrl) {
   });
 
   // Initialize arrays to hold the combined data to append
-  var combinedData = [];
+  var goalEntries = [];
+  var penaltyEntries = [];
 
   // Initialize counters for incremental numbers
   var goalCounter = 1;
@@ -67,12 +68,13 @@ function get_game_events(sourceSpreadsheetUrl) {
         row[4],       // Asst2 (Column E)
         '',           // PenaltyPlayer
         '',           // Infraction
-        ''            // PIM
+        '',           // PIM
+        ''            // GWG flag (to be determined later)
       ];
 
       // Check if the ID already exists
       if (!existingIds.has(entryId)) {
-        combinedData.push(goalEntry);
+        goalEntries.push(goalEntry);
         existingIds.add(entryId);
       }
       goalCounter++; // Increment goal counter
@@ -93,24 +95,90 @@ function get_game_events(sourceSpreadsheetUrl) {
         '',           // Asst2
         row[7],       // PenaltyPlayer (Player, Column H)
         row[8],       // Infraction (Column I)
-        row[9]        // PIM
+        row[9],       // PIM
+        ''            // GWG flag (empty for penalties)
       ];
 
       // Check if the ID already exists
       if (!existingIds.has(entryId)) {
-        combinedData.push(penaltyEntry);
+        penaltyEntries.push(penaltyEntry);
         existingIds.add(entryId);
       }
       penaltyCounter++; // Increment penalty counter
     }
   });
 
+  // Determine the Game-Winning Goal (GWG)
+  if (goalEntries.length > 0) {
+    // Collect unique team names from the goal data
+    var teams = [...new Set(goalEntries.map(function(goal) { return goal[3]; }))]; // Team is at index 3
+
+    // Initialize team scores
+    var finalScores = {};
+    teams.forEach(function(team) {
+      finalScores[team] = 0;
+    });
+
+    // Determine final scores
+    goalEntries.forEach(function(goal) {
+      var team = goal[3]; // Team is at index 3
+      finalScores[team]++;
+    });
+
+    // Identify the winning and losing teams
+    var winningTeam = '';
+    var losingTeam = '';
+    var winningScore = 0;
+    var losingScore = 0;
+
+    if (finalScores[teams[0]] > finalScores[teams[1]]) {
+      winningTeam = teams[0];
+      losingTeam = teams[1];
+      winningScore = finalScores[winningTeam];
+      losingScore = finalScores[losingTeam];
+    } else if (finalScores[teams[0]] < finalScores[teams[1]]) {
+      winningTeam = teams[1];
+      losingTeam = teams[0];
+      winningScore = finalScores[winningTeam];
+      losingScore = finalScores[losingTeam];
+    } else {
+      // The game is a tie; no GWG
+      SpreadsheetApp.getActive().toast('The game ended in a tie. No Game-Winning Goal to determine.');
+    }
+
+    // If there's a winning team, identify the GWG
+    if (winningTeam) {
+      // Reset team scores for tracking during the game
+      var cumulativeScores = {};
+      teams.forEach(function(team) {
+        cumulativeScores[team] = 0;
+      });
+
+      // Iterate through goals to find the GWG
+      for (var i = 0; i < goalEntries.length; i++) {
+        var goal = goalEntries[i];
+        var team = goal[3]; // Team is at index 3
+        cumulativeScores[team]++;
+
+        // Check if this goal puts the winning team ahead of the losing team's final score
+        if (team === winningTeam && cumulativeScores[winningTeam] === losingScore + 1) {
+          // Mark this goal as the GWG
+          goal[10] = 'Yes'; // GWG flag is at index 10
+          break; // GWG found
+        }
+      }
+    }
+  }
+
+  // Combine goalEntries and penaltyEntries
+  var combinedData = goalEntries.concat(penaltyEntries);
+
   // Append the combined data to the destination sheet
   if (combinedData.length > 0) {
     // Check if headers are present; if not, add them
     var lastRow = destinationSheet.getLastRow();
     if (lastRow === 0) {
-      var headers = ['id', 'gameid', 'eventTime', 'Team', 'ScoredBy', 'Asst1', 'Asst2', 'PenaltyPlayer', 'Infraction', 'PIM'];
+      var headers = ['id', 'gameid', 'eventTime', 'Team', 'ScoredBy', 'Asst1', 'Asst2', 'PenaltyPlayer', 'Infraction', 'PIM', 'GWG'];
       destinationSheet.appendRow(headers);
       lastRow = 1;
     }
@@ -121,7 +189,7 @@ function get_game_events(sourceSpreadsheetUrl) {
     var numCols = combinedData[0].length;
     destinationSheet.getRange(startRow, 1, numRows, numCols).setValues(combinedData);
 
-    SpreadsheetApp.getActive().toast('Data appended successfully without duplicates!');
+    SpreadsheetApp.getActive().toast('Data appended successfully with the Game-Winning Goal identified!');
   } else {
     SpreadsheetApp.getActive().toast('No new data to append.');
   }
