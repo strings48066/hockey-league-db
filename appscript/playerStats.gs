@@ -30,42 +30,23 @@ function updatePlayerStats() {
     const GWG_GAME_EVENTS_COL = 10;   // Column K (GWG in gameEvents sheet)
 
     // Games Played Sheet Columns
-    const GP_GAME_ID_COL = 0;         // Column A
-    const GP_TEAM_COL = 1;            // Column B
     const GP_PLAYER_NAME_COL = 2;     // Column C
-    const GP_POSITION_COL = 3;        // Column D
-    const GP_JERSEY_NUMBER_COL = 4;   // Column E
-    const GP_SUB_COL = 5;             // Column F
+    const GP_SUB_COL = 5;             // Column F (Subbed)
 
     // ============================
     // 2. Access Sheets and Data
     // ============================
 
-    // Access the active spreadsheet
     const ss = SpreadsheetApp.getActiveSpreadsheet();
-
-    // Access the players sheet
     const playersSheet = ss.getSheetByName(playersSheetName);
-    if (!playersSheet) {
-      SpreadsheetApp.getUi().alert(`Sheet "${playersSheetName}" not found.`);
-      return;
-    }
-
-    // Access the gameEvents sheet
     const gameEventsSheet = ss.getSheetByName(gameEventsSheetName);
-    if (!gameEventsSheet) {
-      SpreadsheetApp.getUi().alert(`Sheet "${gameEventsSheetName}" not found.`);
-      return;
-    }
-
-    // Access the gamesPlayed sheet
     const gamesPlayedSheet = ss.getSheetByName(gamesPlayedSheetName);
-    if (!gamesPlayedSheet) {
-      SpreadsheetApp.getUi().alert(`Sheet "${gamesPlayedSheetName}" not found.`);
+
+    if (!playersSheet || !gameEventsSheet || !gamesPlayedSheet) {
+      SpreadsheetApp.getUi().alert('One or more required sheets are missing.');
       return;
     }
 
-    // Retrieve all data from players, gameEvents, and gamesPlayed sheets
     const playersData = playersSheet.getDataRange().getValues();
     const gameEventsData = gameEventsSheet.getDataRange().getValues();
     const gamesPlayedData = gamesPlayedSheet.getDataRange().getValues();
@@ -74,7 +55,6 @@ function updatePlayerStats() {
     // 3. Initialize Player Stats Map
     // ============================
 
-    // Create a map using full name for unique identification
     const playerStatsMap = {};
 
     for (let i = 1; i < playersData.length; i++) { // Start from 1 to skip header
@@ -83,27 +63,26 @@ function updatePlayerStats() {
 
       if (firstName && lastName) {
         const fullName = `${firstName} ${lastName}`;
-        playerStatsMap[fullName] = { goals: 0, assists: 0, pim: 0, gwg: 0, gs: 0 };
+        playerStatsMap[fullName] = { gp: 0, goals: 0, assists: 0, pim: 0, gwg: 0, gs: 0 };
       } else {
         Logger.log(`Missing data for player at row ${i + 1}. First Name: "${firstName}", Last Name: "${lastName}"`);
       }
     }
 
     // ============================
-    // 4. Calculate Games as Sub (GS) from gamesPlayed Sheet
+    // 4. Calculate Games Played (GP) and Games as Sub (GS) from gamesPlayed Sheet
     // ============================
 
-    // Process gamesPlayedData to count GS (Games as Sub)
     for (let i = 1; i < gamesPlayedData.length; i++) { // Start from 1 to skip header
       const playerName = gamesPlayedData[i][GP_PLAYER_NAME_COL] ? gamesPlayedData[i][GP_PLAYER_NAME_COL].toString().trim().toLowerCase() : '';
       const subFlag = gamesPlayedData[i][GP_SUB_COL];
 
-      // Convert subFlag to number (0 or 1)
       const isSub = subFlag ? Number(subFlag) : 0;
 
       if (playerName && playerStatsMap.hasOwnProperty(playerName)) {
+        playerStatsMap[playerName].gp += 1; // Increment games played
         if (isSub === 1) {
-          playerStatsMap[playerName].gs += 1;
+          playerStatsMap[playerName].gs += 1; // Increment games as sub if applicable
         }
       } else if (playerName) {
         Logger.log(`Player "${playerName}" from gamesPlayed sheet not found in players list.`);
@@ -111,7 +90,7 @@ function updatePlayerStats() {
     }
 
     // ============================
-    // 5. Process Game Events
+    // 5. Process Game Events (Goals, Assists, Penalties, GWG)
     // ============================
 
     for (let i = 1; i < gameEventsData.length; i++) { // Start from 1 to skip header
@@ -123,18 +102,11 @@ function updatePlayerStats() {
       const validPim = isNaN(pim) ? 0 : pim;
       const gwgValue = gameEventsData[i][GWG_GAME_EVENTS_COL];
 
-      // GWG detection logic
-      const isGWG = gwgValue && (
-        gwgValue.toString().trim().toLowerCase() === 'yes' ||
-        gwgValue.toString().trim() === '1' ||
-        gwgValue === 1
-      );
+      const isGWG = gwgValue && (gwgValue.toString().trim().toLowerCase() === 'yes' || gwgValue.toString().trim() === '1' || gwgValue === 1);
 
       // Count Goals
       if (scoredBy && playerStatsMap.hasOwnProperty(scoredBy)) {
         playerStatsMap[scoredBy].goals++;
-
-        // Count GWG if applicable
         if (isGWG) {
           playerStatsMap[scoredBy].gwg++;
         }
@@ -168,13 +140,13 @@ function updatePlayerStats() {
     // 6. Prepare Data for Batch Update
     // ============================
 
-    // Arrays to hold updated stats
     const goalCounts = [];
     const assistCounts = [];
     const pimCounts = [];
     const ptsCounts = [];
     const gwgCounts = [];
-    const gsCounts = []; // For Games as Sub
+    const gsCounts = [];
+    const gpCounts = []; // For Games Played
 
     for (let i = 1; i < playersData.length; i++) { // Start from 1 to skip header
       const firstName = playersData[i][FIRST_NAME_COL] ? playersData[i][FIRST_NAME_COL].toString().trim().toLowerCase() : '';
@@ -188,32 +160,29 @@ function updatePlayerStats() {
           goalCounts.push([stats.goals]);
           assistCounts.push([stats.assists]);
           pimCounts.push([stats.pim]);
-          ptsCounts.push([stats.goals + stats.assists]);
+          ptsCounts.push([stats.goals + stats.assists]); // Points = Goals + Assists
           gwgCounts.push([stats.gwg]);
           gsCounts.push([stats.gs]);
+          gpCounts.push([stats.gp]); // Add games played
 
-          Logger.log(`Setting stats for ${fullName}: Goals=${stats.goals}, Assists=${stats.assists}, PIM=${stats.pim}, PTS=${stats.goals + stats.assists}, GWG=${stats.gwg}, GS=${stats.gs}`);
+          Logger.log(`Setting stats for ${fullName}: GP=${stats.gp}, Goals=${stats.goals}, Assists=${stats.assists}, PIM=${stats.pim}, PTS=${stats.goals + stats.assists}, GWG=${stats.gwg}, GS=${stats.gs}`);
         } else {
-          // Player not found; set stats to 0
           goalCounts.push([0]);
           assistCounts.push([0]);
           pimCounts.push([0]);
           ptsCounts.push([0]);
           gwgCounts.push([0]);
           gsCounts.push([0]);
-
-          Logger.log(`No stats found for ${fullName}. Setting all stats to 0.`);
+          gpCounts.push([0]); // No data; set to 0
         }
       } else {
-        // If first or last name is missing, set stats to 0
         goalCounts.push([0]);
         assistCounts.push([0]);
         pimCounts.push([0]);
         ptsCounts.push([0]);
         gwgCounts.push([0]);
         gsCounts.push([0]);
-
-        Logger.log(`Player with missing first or last name at row ${i + 1}. Setting stats to 0.`);
+        gpCounts.push([0]); // Missing name; set to 0
       }
     }
 
@@ -222,6 +191,10 @@ function updatePlayerStats() {
     // ============================
 
     const startRow = 2; // Assuming headers are in row 1
+
+    // Update Games Played (Column G)
+    const gpRange = playersSheet.getRange(startRow, GP_COL + 1, gpCounts.length, 1);
+    gpRange.setValues(gpCounts);
 
     // Update Goals (Column H)
     const goalsRange = playersSheet.getRange(startRow, GOALS_COL + 1, goalCounts.length, 1);
@@ -251,7 +224,7 @@ function updatePlayerStats() {
     // 8. Completion Notification
     // ============================
 
-    SpreadsheetApp.getUi().alert('Player stats have been updated successfully, including Games as Sub and other stats!');
+    SpreadsheetApp.getUi().alert('Player stats, including Games Played, have been updated successfully!');
 
   } catch (error) {
     SpreadsheetApp.getUi().alert(`An error occurred: ${error.message}`);

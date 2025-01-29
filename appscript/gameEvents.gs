@@ -151,21 +151,19 @@ function get_game_events(sourceSpreadsheetUrl) {
       // The game is a tie; no GWG
       SpreadsheetApp.getActive().toast('The game ended in a tie. No Game-Winning Goal to determine.');
       winningTeam = null;
-    }
-
+    }  
     // If there's a winning team, identify the GWG
     if (winningTeam) {
       // Reset team scores for tracking during the game
       var cumulativeScores = {};
       cumulativeScores[team1] = 0;
       cumulativeScores[team2] = 0;
-
       // Iterate through goals to find the GWG
       for (var i = 0; i < goalEntries.length; i++) {
         var goal = goalEntries[i];
         var team = goal[3]; // Team is at index 3
         cumulativeScores[team]++;
-
+        Logger.log(cumulativeScores)
         // Check if this goal puts the winning team ahead of the losing team's final score
         if (team === winningTeam && cumulativeScores[winningTeam] === losingScore + 1) {
           // Mark this goal as the GWG

@@ -51,25 +51,26 @@ def getRange(range_name):
 
 def format_players(df):
     # Assuming df has columns: ["id", "FirstName", "Lastname", "Position", "Email", "Team", "SeasonID"]
-    df.columns = ["id", "FirstName", "Lastname", "Email"]
+    df.columns = ["id", "FirstName", "Lastname"]
     return df[["id", "FirstName", "Lastname"]].to_dict(orient='records')
 
 def format_season(df):
-    df.columns = ["id", "Team", "JerseyNum", "Position", "GP", "G", "A", "PTS", "PIM", "GWG", "GS"]
+    df.columns = ["Team", "JerseyNumber", "Position", "GP", "G", "A", "PTS", "PIM", "GWG", "GS"]
+    df["id"] = "1"
     return df.to_dict(orient='records')
 
 def main():
     input_path = "player_template.json"
     output_path = "output.json"
-    range_players = "players!A1:D49"
-    range_season = "players!E1:O49"
+    range_players = "players!A1:C52"
+    range_season = "players!D1:O52"
     
     df_players = getRange(range_players)
     df_season = getRange(range_season)
-    
+
     players = format_players(df_players)
     seasons = format_season(df_season)
-    
+
     # Combine players with their respective seasons based on index
     combined_data = []
     for i, player in enumerate(players):
