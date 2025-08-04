@@ -1,0 +1,962 @@
+[
+    {
+      "id": "1",
+      "firstName": "Andy",
+      "lastName": "Shawver",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "firstName": "Brad",
+      "lastName": "Berk",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "firstName": "Brad",
+      "lastName": "Berlin",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "firstName": "Brian",
+      "lastName": "Berschbach",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "firstName": "Bryan",
+      "lastName": "Smarch",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "firstName": "Chad",
+      "lastName": "Shawver",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "firstName": "Dan",
+      "lastName": "Telfer",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "firstName": "Dave",
+      "lastName": "Tremont",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "firstName": "Denny",
+      "lastName": "Savage",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "firstName": "Don",
+      "lastName": "Button",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "firstName": "Don",
+      "lastName": "Smolenski",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "firstName": "Doug",
+      "lastName": "Gardner",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "firstName": "Doug",
+      "lastName": "Reich",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "firstName": "Duncan",
+      "lastName": "MacEachern",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "firstName": "Jack",
+      "lastName": "Digiovanni",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "firstName": "Jimmy",
+      "lastName": "White",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "firstName": "John",
+      "lastName": "Marshall",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "firstName": "Justin",
+      "lastName": "Berlin",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "firstName": "Karl",
+      "lastName": "Messenger",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "firstName": "Ken",
+      "lastName": "Kish",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "firstName": "Kevan",
+      "lastName": "Johnston",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "firstName": "Kevin",
+      "lastName": "McEvoy",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "G",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "firstName": "Kyle",
+      "lastName": "Lawton",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "firstName": "Lee",
+      "lastName": "Lair",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "firstName": "Marc",
+      "lastName": "Motyl",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "G",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "firstName": "Matt",
+      "lastName": "Brachel",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "firstName": "Matt",
+      "lastName": "Elliott",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "G",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "firstName": "Matt",
+      "lastName": "Kish",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "firstName": "Matt",
+      "lastName": "Schellenberg",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "firstName": "Matt",
+      "lastName": "York",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "firstName": "Mike",
+      "lastName": "Burch",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "firstName": "Mike",
+      "lastName": "Guillery",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "firstName": "Mike",
+      "lastName": "Hawkins",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "firstName": "Mike",
+      "lastName": "Hrynik",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "firstName": "Mike",
+      "lastName": "Mast",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "firstName": "Paul",
+      "lastName": "Becigneul",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "G",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "37",
+      "firstName": "Phil",
+      "lastName": "Serafini",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "firstName": "Rich",
+      "lastName": "Sommers",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "firstName": "Rick",
+      "lastName": "Mooney",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "firstName": "Rob",
+      "lastName": "Brachel",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "firstName": "Roger",
+      "lastName": "Gudobba",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "firstName": "Scott",
+      "lastName": "Finley",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "firstName": "Steve",
+      "lastName": "Stringer",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "4",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "firstName": "Todd",
+      "lastName": "Driscoll",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "45",
+      "firstName": "Todd",
+      "lastName": "Ralph",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "2",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "firstName": "Todd",
+      "lastName": "Sweet",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "47",
+      "firstName": "Tom",
+      "lastName": "Berlin",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "3",
+          "JerseyNum": "",
+          "Position": "F",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "firstName": "Tom",
+      "lastName": "Rolands",
+      "seasons": [
+        {
+          "id": "1",
+          "Team": "1",
+          "JerseyNum": "",
+          "Position": "D",
+          "GP": "0",
+          "G": "0",
+          "A": "0",
+          "PTS": "0",
+          "PIM": "0",
+          "GWG": "0",
+          "GS": "0"
+        }
+      ]
+    }
+  ]

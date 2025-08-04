@@ -5,7 +5,7 @@ Consolidates games, players, and standings operations into a single interface.
 import os
 import sys
 from sheets_client import SheetsClient
-from formatters import GameFormatter, PlayerFormatter, StandingsFormatter, OutputManager
+from formatters import GameFormatter, PlayerFormatter, StandingsFormatter, GoalieStatsFormatter, OutputManager
 import config
 
 class UHLOpsManager:
@@ -14,6 +14,7 @@ class UHLOpsManager:
         self.game_formatter = GameFormatter()
         self.player_formatter = PlayerFormatter()
         self.standings_formatter = StandingsFormatter()
+        self.goalie_stats_formatter = GoalieStatsFormatter()
         self.output_manager = OutputManager()
     
     def process_players(self, output_dir="./output"):
@@ -170,7 +171,7 @@ class UHLOpsManager:
     
     def build_complete_schedule(self, output_dir="./output"):
         """Build complete schedule.json matching the existing format"""
-        print("Building complete schedule with games and events...")
+        print("Building complete schedule with games, events, and lineups...")
         
         # Fetch games data
         df_games = self.sheets_client.get_range(config.GAMES_RANGE)
@@ -184,10 +185,21 @@ class UHLOpsManager:
             print("No game events data found")
             return None
         
+        # Fetch gamesPlayed data for lineups
+        df_games_played = None
+        try:
+            df_games_played = self.sheets_client.get_range(config.GAMES_PLAYED_RANGE)
+            if df_games_played.empty:
+                print("⚠️  No gamesPlayed data found - lineups will be empty")
+            else:
+                print(f"Found gamesPlayed data with {len(df_games_played)} rows")
+        except Exception as e:
+            print(f"⚠️  Could not fetch gamesPlayed data: {e} - lineups will be empty")
+        
         print(f"Processing {len(df_games)} games and {len(df_events)-1} events...")
         
-        # Build complete schedule
-        schedule_data = self.game_formatter.build_complete_schedule(df_games, df_events)
+        # Build complete schedule with lineup data
+        schedule_data = self.game_formatter.build_complete_schedule(df_games, df_events, df_games_played)
         
         # Create output directory if it doesn't exist
         os.makedirs(output_dir, exist_ok=True)
@@ -198,6 +210,42 @@ class UHLOpsManager:
         
         print(f"Generated complete schedule with {len(schedule_data)} games")
         return schedule_data
+    
+    def calculate_goalie_stats(self, output_dir="./output"):
+        """Calculate goalie statistics from existing schedule.json"""
+        print("Calculating goalie statistics from schedule.json...")
+        
+        # Load schedule data
+        schedule_path = os.path.join(output_dir, "schedule.json")
+        schedule_data = self.output_manager.load_json(schedule_path)
+        
+        if not schedule_data:
+            print("No schedule data found. Please generate schedule first.")
+            return None
+        
+        # Calculate goalie stats
+        goalie_stats = self.goalie_stats_formatter.calculate_goalie_stats_from_schedule(schedule_data)
+        formatted_stats = self.goalie_stats_formatter.format_goalie_stats(goalie_stats)
+        
+        # Create output directory if it doesn't exist
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Save output
+        output_path = os.path.join(output_dir, "goalie_stats.json")
+        self.output_manager.save_json(formatted_stats, output_path)
+        
+        # Print summary
+        print(f"\nCalculated statistics for {len(formatted_stats)} goalies:")
+        print(f"{'Name':<20} {'Team':<10} {'GP':<3} {'W':<3} {'L':<3} {'T':<3} {'SO':<3} {'GA':<3} {'GAA':<5} {'Record':<8}")
+        print("-" * 80)
+        
+        for stats in formatted_stats[:10]:  # Show top 10
+            print(f"{stats['name']:<20} {stats['team']:<10} {stats['gp']:<3} {stats['w']:<3} {stats['l']:<3} {stats['t']:<3} {stats['so']:<3} {stats['ga']:<3} {stats['gaa']:<5} {stats['record']:<8}")
+        
+        if len(formatted_stats) > 10:
+            print(f"... and {len(formatted_stats) - 10} more goalies")
+        
+        return formatted_stats
 
     def process_all(self, include_games=False):
         """Process all data types"""
@@ -230,10 +278,11 @@ class UHLOpsManager:
 def main():
     """Main function for command line usage"""
     if len(sys.argv) < 2:
-        print("Usage: python uhl_ops.py [players|standings|games|single-game|all-games|game-events|schedule|all] [player_sheet_id] [game_sheet_id]")
+        print("Usage: python uhl_ops.py [players|standings|games|single-game|all-games|game-events|schedule|goalie-stats|all] [player_sheet_id] [game_sheet_id]")
         print("Examples:")
         print("  python uhl_ops.py players")
         print("  python uhl_ops.py schedule              # Generate complete schedule.json")
+        print("  python uhl_ops.py goalie-stats          # Calculate goalie statistics from schedule.json")
         print("  python uhl_ops.py game-events")
         print("  python uhl_ops.py single-game <player_sheet_id> <game_sheet_id>") 
         print("  python uhl_ops.py all <player_sheet_id>")
@@ -258,6 +307,8 @@ def main():
             manager.analyze_game_events()
         elif operation == "schedule":
             manager.build_complete_schedule()
+        elif operation == "goalie-stats" or operation == "goalies":
+            manager.calculate_goalie_stats()
         elif operation == "single-game":
             if not game_sheet_id:
                 print("❌ Game spreadsheet ID required for single-game processing")
@@ -267,7 +318,7 @@ def main():
         elif operation == "all":
             manager.process_all(include_games=True)
         else:
-            print("Invalid operation. Use: players, standings, games, single-game, all-games, game-events, schedule, or all")
+            print("Invalid operation. Use: players, standings, games, single-game, all-games, game-events, schedule, goalie-stats, or all")
     except ValueError as e:
         print(f"Configuration Error: {e}")
         print("\nTo fix this:")

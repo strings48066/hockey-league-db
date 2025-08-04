@@ -62,8 +62,8 @@ def format_season(df):
 def main():
     input_path = "player_template.json"
     output_path = "output.json"
-    range_players = "players!A1:C52"
-    range_season = "players!D1:O52"
+    range_players = "players!A1:C53"
+    range_season = "players!D1:O53"
     
     df_players = getRange(range_players)
     df_season = getRange(range_season)

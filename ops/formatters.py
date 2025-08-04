@@ -42,78 +42,228 @@ class GameFormatter:
         return events_df.to_dict(orient='records')
     
     @staticmethod
-    def build_complete_schedule(games_df, events_df, players_df=None):
-        """Build complete schedule.json format by combining games and events data"""
-        if games_df.empty:
-            return []
+    def get_events_for_game(events_df, game_id):
+        """Extract goals and penalties for a specific game"""
+        goals = []
+        penalties = []
         
-        # Format basic games data
-        games = GameFormatter.format_all_games(games_df)
+        if events_df.empty:
+            return {"goals": goals, "penalties": penalties}
         
-        # Format events data
-        events = GameFormatter.format_game_events(events_df)
+        # Work with the raw dataframe without assuming column names
+        # Skip header row if it exists
+        data_rows = events_df.iloc[1:] if len(events_df) > 1 else events_df
         
-        # Group events by gameId
-        events_by_game = {}
-        for event in events:
-            game_id = str(event['gameId'])
-            if game_id not in events_by_game:
-                events_by_game[game_id] = {'goals': [], 'penalties': []}
-            
-            # Check if this is a goal or penalty based on populated fields
-            if event['ScoredBy'] and str(event['ScoredBy']).strip():
-                # This is a goal
-                goal = {
-                    "id": len(events_by_game[game_id]['goals']) + 1,
-                    "Time": str(event['eventTime']),
-                    "Team": str(event['Team']),
-                    "ScoredBy": str(event['ScoredBy']),
-                    "Asst1": str(event['Asst1']) if event['Asst1'] and str(event['Asst1']).strip() else None,
-                    "Asst2": str(event['Asst2']) if event['Asst2'] and str(event['Asst2']).strip() else None
+        goal_id = 1
+        penalty_id = 1
+        
+        for _, event_row in data_rows.iterrows():
+            try:
+                # Extract data by column position
+                event_game_id = str(event_row.iloc[1]).strip() if len(event_row) > 1 and event_row.iloc[1] else None
+                
+                # Skip if not for this game
+                if event_game_id != str(game_id):
+                    continue
+                
+                event_time = str(event_row.iloc[2]).strip() if len(event_row) > 2 and event_row.iloc[2] else ""
+                team = str(event_row.iloc[3]).strip() if len(event_row) > 3 and event_row.iloc[3] else ""
+                scored_by = str(event_row.iloc[4]).strip() if len(event_row) > 4 and event_row.iloc[4] else ""
+                asst1 = str(event_row.iloc[5]).strip() if len(event_row) > 5 and event_row.iloc[5] else ""
+                asst2 = str(event_row.iloc[6]).strip() if len(event_row) > 6 and event_row.iloc[6] else ""
+                penalty_player = str(event_row.iloc[7]).strip() if len(event_row) > 7 and event_row.iloc[7] else ""
+                infraction = str(event_row.iloc[8]).strip() if len(event_row) > 8 and event_row.iloc[8] else ""
+                pim = str(event_row.iloc[9]).strip() if len(event_row) > 9 and event_row.iloc[9] else ""
+                
+                # Check if this is a goal (has ScoredBy)
+                if scored_by and scored_by.lower() not in ['nan', '', 'none']:
+                    goal = {
+                        "id": goal_id,
+                        "Time": event_time,
+                        "Team": team,
+                        "ScoredBy": scored_by,
+                        "Asst1": asst1 if asst1 and asst1.lower() not in ['nan', '', 'none'] else None,
+                        "Asst2": asst2 if asst2 and asst2.lower() not in ['nan', '', 'none'] else None
+                    }
+                    goals.append(goal)
+                    goal_id += 1
+                
+                # Check if this is a penalty (has PenaltyPlayer and Infraction)
+                if (penalty_player and penalty_player.lower() not in ['nan', '', 'none'] and
+                    infraction and infraction.lower() not in ['nan', '', 'none']):
+                    
+                    penalty = {
+                        "id": penalty_id,
+                        "Time": event_time,
+                        "Team": team,
+                        "Player": penalty_player,
+                        "Infraction": infraction,
+                        "Minutes": pim
+                    }
+                    penalties.append(penalty)
+                    penalty_id += 1
+                    
+            except Exception as e:
+                print(f"Error processing event row for game {game_id}: {e}")
+                continue
+        
+        return {"goals": goals, "penalties": penalties}
+    
+    @staticmethod
+    def extract_lineups_from_games_played(games_played_df):
+        """Extract lineup data from gamesPlayed sheet organized by game ID"""
+        if games_played_df.empty:
+            return {}
+        
+        lineups_by_game = {}
+        
+        # Skip header row and process the actual data
+        data_rows = games_played_df.iloc[1:] if len(games_played_df) > 1 else games_played_df
+        
+        # Group players by gameId and team
+        for _, row in data_rows.iterrows():
+            try:
+                game_id = str(row.iloc[0]).strip() if len(row) > 0 and row.iloc[0] else None
+                team = str(row.iloc[1]).strip() if len(row) > 1 and row.iloc[1] else None
+                player_name = str(row.iloc[2]).strip() if len(row) > 2 and row.iloc[2] else None
+                position = str(row.iloc[3]).strip() if len(row) > 3 and row.iloc[3] else ""
+                jersey_number = str(row.iloc[4]).strip() if len(row) > 4 and row.iloc[4] else ""
+                is_sub = str(row.iloc[5]).strip() if len(row) > 5 and row.iloc[5] else "0"
+                
+                # Skip invalid rows
+                if not game_id or not team or not player_name or game_id == 'gameId':
+                    continue
+                
+                # Initialize game if not exists
+                if game_id not in lineups_by_game:
+                    lineups_by_game[game_id] = {"Home": [], "Away": []}
+                
+                # Create player object
+                player_obj = {
+                    "id": len(lineups_by_game[game_id]["Home"]) + len(lineups_by_game[game_id]["Away"]) + 1,
+                    "name": player_name,
+                    "pos": position,
+                    "no": jersey_number,
+                    "status": "sub" if is_sub == "1" else "active",
+                    "g": "0",   # Goals (would be calculated from events)
+                    "a": "0",   # Assists (would be calculated from events)
+                    "pts": "0", # Points (would be calculated from events)
+                    "pim": "0"  # Penalty minutes (would be calculated from events)
                 }
-                events_by_game[game_id]['goals'].append(goal)
-            
-            elif event['PenaltyPlayer'] and str(event['PenaltyPlayer']).strip():
-                # This is a penalty
-                penalty = {
-                    "id": len(events_by_game[game_id]['penalties']) + 1,
-                    "Time": str(event['eventTime']),
-                    "Team": str(event['Team']),
-                    "Player": str(event['PenaltyPlayer']),
-                    "Infraction": str(event['Infraction']),
-                    "Minutes": str(event['PIM'])
-                }
-                events_by_game[game_id]['penalties'].append(penalty)
+                
+                # Add to appropriate team lineup
+                # We need to determine if this team is Home or Away for this game
+                # For now, we'll add all players to Home and determine later based on game data
+                lineups_by_game[game_id]["Home"].append(player_obj)
+                
+            except Exception as e:
+                print(f"Error processing lineup row: {e}")
+                continue
         
-        # Build complete schedule entries
+        return lineups_by_game
+    
+    @staticmethod
+    def build_complete_schedule(games_df, events_df, games_played_df=None):
+        """Build complete schedule with games, events, and lineups"""
         complete_schedule = []
-        for game in games:
-            game_id = str(game['id'])
-            
-            # Get events for this game
-            game_events = events_by_game.get(game_id, {'goals': [], 'penalties': []})
-            
-            # Create schedule entry matching existing format
-            schedule_entry = {
-                "id": str(game['id']),
-                "Date": str(game['Date']),
-                "Home": str(game['HomeTeam']),
-                "Away": str(game['AwayTeam']),
-                "Time": str(game['Time']).replace(' PM', '').replace(' AM', ''),  # Remove AM/PM
-                "Ref1": str(game['Ref1']) if game['Ref1'] else "",
-                "Ref2": str(game['Ref2']) if game['Ref2'] else "",
-                "GameLink": f"/gameSummary/{int(game['id']) - 1}",  # Generate game link
-                "Score": f"{game['HomeTeam']} {game['HomeScore']} - {game['AwayScore']} {game['AwayTeam']}",
-                "Played": "Y" if game['HomeScore'] and game['AwayScore'] else "N",
-                "Lineups": {
-                    "Home": [],  # Would need roster data to populate
-                    "Away": []   # Would need roster data to populate
-                },
-                "Goals": game_events['goals'],
-                "Penalties": game_events['penalties']
-            }
-            
-            complete_schedule.append(schedule_entry)
+        
+        # Get lineup data if available
+        lineups_by_game = {}
+        if games_played_df is not None and not games_played_df.empty:
+            lineups_by_game = GameFormatter.extract_lineups_from_games_played(games_played_df)
+        
+        # Process each game
+        for _, game_row in games_df.iterrows():
+            try:
+                # Based on debug output, the actual structure is:
+                # [0]: Season ID, [1]: Game ID, [2]: Date, [3]: Time, [4]: Home Team ID, [5]: Away Team ID, 
+                # [6]: Home Team Name, [7]: Away Team Name, [8]: Home Score, [9]: Away Score, [10]: Ref1, [11]: Ref2
+                
+                game_id = str(game_row.iloc[1])  # Game ID is in column 1, not 0
+                date = str(game_row.iloc[2]) if len(game_row) > 2 else ""
+                time = str(game_row.iloc[3]) if len(game_row) > 3 else ""
+                home_team = str(game_row.iloc[6]) if len(game_row) > 6 else ""
+                away_team = str(game_row.iloc[7]) if len(game_row) > 7 else ""
+                home_score = str(game_row.iloc[8]) if len(game_row) > 8 else ""
+                away_score = str(game_row.iloc[9]) if len(game_row) > 9 else ""
+                ref1 = str(game_row.iloc[10]) if len(game_row) > 10 else ""
+                ref2 = str(game_row.iloc[11]) if len(game_row) > 11 and game_row.iloc[11] else ""
+                
+                # Create score string
+                if home_score and away_score and home_score != '' and away_score != '':
+                    score = f"{home_team} {home_score} - {away_score} {away_team}"
+                    played = "Y"
+                else:
+                    score = f"{home_team}  -  {away_team}"
+                    played = "N"
+                
+                # Get events for this game
+                game_events = GameFormatter.get_events_for_game(events_df, game_id)
+                
+                # Get lineups for this game and organize by Home/Away
+                home_lineup = []
+                away_lineup = []
+                
+                # Process gamesPlayed data for this specific game
+                if games_played_df is not None and not games_played_df.empty:
+                    data_rows = games_played_df.iloc[1:] if len(games_played_df) > 1 else games_played_df
+                    
+                    for _, row in data_rows.iterrows():
+                        try:
+                            row_game_id = str(row.iloc[0]).strip() if len(row) > 0 and row.iloc[0] else None
+                            team = str(row.iloc[1]).strip() if len(row) > 1 and row.iloc[1] else None
+                            player_name = str(row.iloc[2]).strip() if len(row) > 2 and row.iloc[2] else None
+                            position = str(row.iloc[3]).strip() if len(row) > 3 and row.iloc[3] else ""
+                            jersey_number = str(row.iloc[4]).strip() if len(row) > 4 and row.iloc[4] else ""
+                            is_sub = str(row.iloc[5]).strip() if len(row) > 5 and row.iloc[5] else "0"
+                            
+                            if row_game_id == game_id and player_name and team:
+                                player_obj = {
+                                    "id": len(home_lineup) + len(away_lineup) + 1,
+                                    "name": player_name,
+                                    "pos": position,
+                                    "no": jersey_number,
+                                    "status": "sub" if is_sub == "1" else "active",
+                                    "g": "0",
+                                    "a": "0", 
+                                    "pts": "0",
+                                    "pim": "0"
+                                }
+                                
+                                # Assign to home or away based on team match
+                                if team == home_team:
+                                    home_lineup.append(player_obj)
+                                elif team == away_team:
+                                    away_lineup.append(player_obj)
+                                    
+                        except Exception as e:
+                            continue
+                
+                # Create schedule entry with correct column mapping
+                schedule_entry = {
+                    "id": game_id,
+                    "Date": date,
+                    "Home": home_team,
+                    "Away": away_team,
+                    "Time": time,
+                    "Ref1": ref1,
+                    "Ref2": ref2,
+                    "GameLink": f"/gameSummary/{int(game_id) - 1}",  # GameLink is game_id - 1
+                    "Score": score,
+                    "Played": played,
+                    "Lineups": {
+                        "Home": home_lineup,
+                        "Away": away_lineup
+                    },
+                    "Goals": game_events['goals'],
+                    "Penalties": game_events['penalties']
+                }
+                
+                complete_schedule.append(schedule_entry)
+                
+            except Exception as e:
+                print(f"Error processing game: {e}")
+                continue
         
         return complete_schedule
     
@@ -206,7 +356,7 @@ class PlayerFormatter:
     @staticmethod
     def format_season_stats(df):
         """Format player season statistics"""
-        df.columns = ["Team", "JerseyNumber", "Position", "GP", "G", "A", "PTS", "PIM", "GWG", "GS"]
+        df.columns = ["Team", "JerseyNumber", "Position", "GP", "G", "A", "PTS", "PIM", "GWG"]
         df["id"] = "1"
         return df.to_dict(orient='records')
     
@@ -248,6 +398,151 @@ class StandingsFormatter:
             standings_data.append(data)
         
         return standings_data
+
+class GoalieStatsFormatter:
+    @staticmethod
+    def calculate_goalie_stats_from_schedule(schedule_data):
+        """Calculate comprehensive goalie statistics from schedule data"""
+        from collections import defaultdict
+        
+        goalie_stats = defaultdict(lambda: {
+            'name': '',
+            'team': '',
+            'gp': 0,
+            'w': 0,
+            'l': 0,
+            't': 0,
+            'so': 0,
+            'ga': 0,
+            'gaa': 0.0,
+            'games': []
+        })
+        
+        for game in schedule_data:
+            if game.get('Played') != 'Y':
+                continue
+                
+            game_id = game.get('id', '')
+            home_team = game.get('Home', '')
+            away_team = game.get('Away', '')
+            home_score, away_score = GoalieStatsFormatter.parse_score(game.get('Score', ''))
+            
+            # Find goalies in lineups
+            home_goalies = GoalieStatsFormatter.find_goalies_in_lineup(game.get('Lineups', {}).get('Home', []))
+            away_goalies = GoalieStatsFormatter.find_goalies_in_lineup(game.get('Lineups', {}).get('Away', []))
+            
+            # Process home team goalies
+            for goalie in home_goalies:
+                key = f"{goalie['name']}_{home_team}"
+                stats = goalie_stats[key]
+                stats['name'] = goalie['name']
+                stats['team'] = home_team
+                stats['gp'] += 1
+                stats['ga'] += away_score
+                
+                # Determine W/L/T
+                if home_score > away_score:
+                    stats['w'] += 1
+                elif home_score < away_score:
+                    stats['l'] += 1
+                else:
+                    stats['t'] += 1
+                
+                # Check for shutout
+                if away_score == 0:
+                    stats['so'] += 1
+                    
+                stats['games'].append({
+                    'game_id': game_id,
+                    'opponent': away_team,
+                    'ga_in_game': away_score,
+                    'result': 'W' if home_score > away_score else 'L' if home_score < away_score else 'T'
+                })
+            
+            # Process away team goalies
+            for goalie in away_goalies:
+                key = f"{goalie['name']}_{away_team}"
+                stats = goalie_stats[key]
+                stats['name'] = goalie['name']
+                stats['team'] = away_team
+                stats['gp'] += 1
+                stats['ga'] += home_score
+                
+                # Determine W/L/T
+                if away_score > home_score:
+                    stats['w'] += 1
+                elif away_score < home_score:
+                    stats['l'] += 1
+                else:
+                    stats['t'] += 1
+                
+                # Check for shutout
+                if home_score == 0:
+                    stats['so'] += 1
+                    
+                stats['games'].append({
+                    'game_id': game_id,
+                    'opponent': home_team,
+                    'ga_in_game': home_score,
+                    'result': 'W' if away_score > home_score else 'L' if away_score < home_score else 'T'
+                })
+        
+        # Calculate GAA for each goalie
+        for stats in goalie_stats.values():
+            if stats['gp'] > 0:
+                stats['gaa'] = round(stats['ga'] / stats['gp'], 2)
+        
+        return dict(goalie_stats)
+    
+    @staticmethod
+    def find_goalies_in_lineup(lineup):
+        """Find all goalies in a team's lineup"""
+        return [player for player in lineup if player.get('pos', '').upper() == 'G']
+    
+    @staticmethod
+    def parse_score(score_string):
+        """Parse score string like 'Chicago 2 - 1 Detroit' to get home and away scores"""
+        if not score_string or ' - ' not in score_string:
+            return 0, 0
+        
+        try:
+            # Split on ' - ' and extract the numbers
+            parts = score_string.split(' - ')
+            home_part = parts[0].strip()
+            away_part = parts[1].strip()
+            
+            # Extract numbers from each part
+            home_score = int(''.join(filter(str.isdigit, home_part.split()[-1])))
+            away_score = int(''.join(filter(str.isdigit, away_part.split()[0])))
+            
+            return home_score, away_score
+        except (ValueError, IndexError):
+            return 0, 0
+    
+    @staticmethod
+    def format_goalie_stats(goalie_stats):
+        """Format goalie stats for JSON output"""
+        formatted = []
+        
+        for key, stats in goalie_stats.items():
+            if stats['gp'] > 0:  # Only include goalies who played
+                formatted.append({
+                    'name': stats['name'],
+                    'team': stats['team'],
+                    'gp': stats['gp'],
+                    'w': stats['w'],
+                    'l': stats['l'],
+                    't': stats['t'],
+                    'so': stats['so'],
+                    'ga': stats['ga'],
+                    'gaa': stats['gaa'],
+                    'record': f"{stats['w']}-{stats['l']}-{stats['t']}"
+                })
+        
+        # Sort by GAA (ascending) then by GP (descending)
+        formatted.sort(key=lambda x: (x['gaa'], -x['gp']))
+        
+        return formatted
 
 class OutputManager:
     @staticmethod

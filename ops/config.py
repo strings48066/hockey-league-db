@@ -9,6 +9,7 @@ GAMES_RANGE = "games!A2:L55"
 PLAYERS_RANGE = "players!A2:C53"  # Fixed to skip header
 PLAYERS_SEASON_RANGE = "players!D2:O53"  # Fixed to skip header
 STANDINGS_RANGE = "standings!A2:L5"
+GAMES_PLAYED_RANGE = "gamesPlayed!A1:Z1000"  # Games with lineups
 
 # Game sheet ranges (for individual game processing)
 GAME_RANGES = {
