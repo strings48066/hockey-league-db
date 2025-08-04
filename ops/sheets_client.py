@@ -7,54 +7,77 @@ import pandas as pd
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+import config
 
 def load_env_file(env_file=".env"):
-    """Load environment variables from .env file"""
+    """Load environment variables from .env file and return a dict"""
+    env_data = {}
     if os.path.exists(env_file):
         with open(env_file, 'r') as f:
             for line in f:
                 if line.strip() and not line.startswith('#'):
-                    key, value = line.strip().split('=', 1)
-                    os.environ[key] = value
+                    if '=' in line:
+                        key, value = line.strip().split('=', 1)
+                        env_data[key] = value
+                        os.environ[key] = value
+    return env_data
 
 class SheetsClient:
-    def __init__(self, service_account_file="service-account-key.json"):
-        # Load environment variables from .env file
-        load_env_file()
+    def __init__(self, player_spreadsheet_id=None, game_spreadsheet_id=None):
+        """Initialize the Google Sheets client with spreadsheet IDs"""
+        # Load from .env file if available
+        env_data = load_env_file()
         
-        self.SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
-        self.SPREADSHEET_ID = os.getenv("SPREADSHEET_ID")
-        self.service_account_file = service_account_file
+        # Use provided IDs or fall back to .env or config defaults
+        self.player_spreadsheet_id = (
+            player_spreadsheet_id or 
+            env_data.get('PLAYER_SPREADSHEET_ID') or 
+            config.DEFAULT_PLAYER_SPREADSHEET_ID
+        )
+        
+        self.game_spreadsheet_id = (
+            game_spreadsheet_id or 
+            env_data.get('GAME_SPREADSHEET_ID') or 
+            config.DEFAULT_GAME_SPREADSHEET_ID
+        )
+        
         self.service = None
-        
-        if not self.SPREADSHEET_ID:
-            raise ValueError("SPREADSHEET_ID not found. Please check your .env file or set the environment variable.")
-        
         self._authenticate()
     
     def _authenticate(self):
-        """Handle Google Sheets authentication using service account"""
+        """Authenticate with Google Sheets API using service account"""
         try:
             credentials = service_account.Credentials.from_service_account_file(
-                self.service_account_file, scopes=self.SCOPES
+                config.SERVICE_ACCOUNT_FILE,
+                scopes=['https://www.googleapis.com/auth/spreadsheets.readonly']
             )
-            self.service = build("sheets", "v4", credentials=credentials)
+            self.service = build('sheets', 'v4', credentials=credentials)
             print("✅ Successfully authenticated with service account")
-        except FileNotFoundError:
-            raise ValueError(f"Service account file not found: {self.service_account_file}")
         except Exception as e:
-            raise ValueError(f"Authentication failed: {e}")
+            print(f"❌ Authentication failed: {e}")
+            raise
     
-    def get_range(self, range_name):
+    def get_range(self, range_name, spreadsheet_type='player'):
         """
         Fetch data from a specific range in the spreadsheet
+        Args:
+            range_name: The range to fetch (e.g., 'Sheet1!A1:C10')
+            spreadsheet_type: 'player' or 'game' to determine which spreadsheet to use
         Returns pandas DataFrame
         """
+        # Determine which spreadsheet ID to use
+        if spreadsheet_type == 'game':
+            spreadsheet_id = self.game_spreadsheet_id
+            if not spreadsheet_id:
+                raise ValueError("Game spreadsheet ID not provided")
+        else:
+            spreadsheet_id = self.player_spreadsheet_id
+            
         try:
             sheet = self.service.spreadsheets()
             result = (
                 sheet.values()
-                .get(spreadsheetId=self.SPREADSHEET_ID, range=range_name)
+                .get(spreadsheetId=spreadsheet_id, range=range_name)
                 .execute()
             )
             values = result.get("values", [])
@@ -71,12 +94,15 @@ class SheetsClient:
             print(f"Error fetching range {range_name}: {err}")
             return pd.DataFrame()
     
-    def get_range_with_headers(self, range_name):
+    def get_range_with_headers(self, range_name, spreadsheet_type='player'):
         """
         Fetch data with first row as headers
+        Args:
+            range_name: The range to fetch (e.g., 'Sheet1!A1:C10')
+            spreadsheet_type: 'player' or 'game' to determine which spreadsheet to use
         Returns pandas DataFrame with column names
         """
-        df = self.get_range(range_name)
+        df = self.get_range(range_name, spreadsheet_type)
         if not df.empty and len(df) > 1:
             df.columns = df.iloc[0]
             df = df[1:].reset_index(drop=True)
