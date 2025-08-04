@@ -1,0 +1,16 @@
+# Ignore environment and secret files
+.env
+service-account-key.json
+token.json
+
+# Ignore output files
+output/
+*.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
