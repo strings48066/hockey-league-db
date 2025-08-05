@@ -239,8 +239,28 @@ class UHLOpsManager:
         print(f"{'Name':<20} {'Team':<10} {'GP':<3} {'W':<3} {'L':<3} {'T':<3} {'SO':<3} {'GA':<3} {'GAA':<5} {'Record':<8}")
         print("-" * 80)
         
+        # Team ID to name mapping
+        team_names = {
+            "1": "New York",
+            "2": "Detroit", 
+            "3": "Chicago",
+            "4": "Boston"
+        }
+        
         for stats in formatted_stats[:10]:  # Show top 10
-            print(f"{stats['name']:<20} {stats['team']:<10} {stats['gp']:<3} {stats['w']:<3} {stats['l']:<3} {stats['t']:<3} {stats['so']:<3} {stats['ga']:<3} {stats['gaa']:<5} {stats['record']:<8}")
+            full_name = f"{stats['firstName']} {stats['lastName']}"
+            season = stats['seasons'][0] if stats['seasons'] else {}
+            team_name = team_names.get(season.get('Team', ''), 'Unknown')
+            gp = season.get('GP', '0')
+            w = season.get('W', '0')
+            l = season.get('L', '0')
+            t = season.get('T', '0')
+            so = season.get('SO', '0')
+            ga = season.get('GA', '0')
+            gaa = season.get('GAA', '0.00')
+            record = f"{w}-{l}-{t}"
+            
+            print(f"{full_name:<20} {team_name:<10} {gp:<3} {w:<3} {l:<3} {t:<3} {so:<3} {ga:<3} {gaa:<5} {record:<8}")
         
         if len(formatted_stats) > 10:
             print(f"... and {len(formatted_stats) - 10} more goalies")

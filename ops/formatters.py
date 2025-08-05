@@ -402,21 +402,19 @@ class StandingsFormatter:
 class GoalieStatsFormatter:
     @staticmethod
     def calculate_goalie_stats_from_schedule(schedule_data):
-        """Calculate comprehensive goalie statistics from schedule data"""
+        """Calculate comprehensive goalie statistics from schedule data with deduplication"""
         from collections import defaultdict
         
-        goalie_stats = defaultdict(lambda: {
-            'name': '',
-            'team': '',
+        # Track all stats for each goalie across all teams
+        all_goalie_data = defaultdict(lambda: defaultdict(lambda: {
             'gp': 0,
             'w': 0,
             'l': 0,
             't': 0,
             'so': 0,
             'ga': 0,
-            'gaa': 0.0,
             'games': []
-        })
+        }))
         
         for game in schedule_data:
             if game.get('Played') != 'Y':
@@ -433,10 +431,8 @@ class GoalieStatsFormatter:
             
             # Process home team goalies
             for goalie in home_goalies:
-                key = f"{goalie['name']}_{home_team}"
-                stats = goalie_stats[key]
-                stats['name'] = goalie['name']
-                stats['team'] = home_team
+                goalie_name = goalie['name']
+                stats = all_goalie_data[goalie_name][home_team]
                 stats['gp'] += 1
                 stats['ga'] += away_score
                 
@@ -454,6 +450,7 @@ class GoalieStatsFormatter:
                     
                 stats['games'].append({
                     'game_id': game_id,
+                    'team': home_team,
                     'opponent': away_team,
                     'ga_in_game': away_score,
                     'result': 'W' if home_score > away_score else 'L' if home_score < away_score else 'T'
@@ -461,10 +458,8 @@ class GoalieStatsFormatter:
             
             # Process away team goalies
             for goalie in away_goalies:
-                key = f"{goalie['name']}_{away_team}"
-                stats = goalie_stats[key]
-                stats['name'] = goalie['name']
-                stats['team'] = away_team
+                goalie_name = goalie['name']
+                stats = all_goalie_data[goalie_name][away_team]
                 stats['gp'] += 1
                 stats['ga'] += home_score
                 
@@ -482,17 +477,50 @@ class GoalieStatsFormatter:
                     
                 stats['games'].append({
                     'game_id': game_id,
+                    'team': away_team,
                     'opponent': home_team,
                     'ga_in_game': home_score,
                     'result': 'W' if away_score > home_score else 'L' if away_score < home_score else 'T'
                 })
         
-        # Calculate GAA for each goalie
-        for stats in goalie_stats.values():
-            if stats['gp'] > 0:
-                stats['gaa'] = round(stats['ga'] / stats['gp'], 2)
+        # Now deduplicate: combine all stats for each goalie under their primary team
+        deduplicated_stats = {}
         
-        return dict(goalie_stats)
+        for goalie_name, team_stats in all_goalie_data.items():
+            # Find primary team (team with most games played)
+            primary_team = max(team_stats.keys(), key=lambda team: team_stats[team]['gp'])
+            
+            # Combine all stats across all teams
+            combined_stats = {
+                'name': goalie_name,
+                'team': primary_team,
+                'gp': 0,
+                'w': 0,
+                'l': 0,
+                't': 0,
+                'so': 0,
+                'ga': 0,
+                'gaa': 0.0,
+                'games': []
+            }
+            
+            # Sum up stats from all teams
+            for team, stats in team_stats.items():
+                combined_stats['gp'] += stats['gp']
+                combined_stats['w'] += stats['w']
+                combined_stats['l'] += stats['l']
+                combined_stats['t'] += stats['t']
+                combined_stats['so'] += stats['so']
+                combined_stats['ga'] += stats['ga']
+                combined_stats['games'].extend(stats['games'])
+            
+            # Calculate GAA
+            if combined_stats['gp'] > 0:
+                combined_stats['gaa'] = round(combined_stats['ga'] / combined_stats['gp'], 2)
+            
+            deduplicated_stats[goalie_name] = combined_stats
+        
+        return deduplicated_stats
     
     @staticmethod
     def find_goalies_in_lineup(lineup):
@@ -521,26 +549,52 @@ class GoalieStatsFormatter:
     
     @staticmethod
     def format_goalie_stats(goalie_stats):
-        """Format goalie stats for JSON output"""
+        """Format deduplicated goalie stats to match player schema with seasons"""
         formatted = []
         
-        for key, stats in goalie_stats.items():
-            if stats['gp'] > 0:  # Only include goalies who played
-                formatted.append({
-                    'name': stats['name'],
-                    'team': stats['team'],
-                    'gp': stats['gp'],
-                    'w': stats['w'],
-                    'l': stats['l'],
-                    't': stats['t'],
-                    'so': stats['so'],
-                    'ga': stats['ga'],
-                    'gaa': stats['gaa'],
-                    'record': f"{stats['w']}-{stats['l']}-{stats['t']}"
-                })
+        # Sort goalies by GAA (ascending) then by GP (descending)
+        sorted_goalies = sorted(
+            [(name, stats) for name, stats in goalie_stats.items() if stats['gp'] > 0],
+            key=lambda x: (x[1]['gaa'], -x[1]['gp'])
+        )
         
-        # Sort by GAA (ascending) then by GP (descending)
-        formatted.sort(key=lambda x: (x['gaa'], -x['gp']))
+        for i, (goalie_name, stats) in enumerate(sorted_goalies, 1):
+            # Split name into first and last name
+            name_parts = goalie_name.split(' ', 1)
+            first_name = name_parts[0] if len(name_parts) > 0 else goalie_name
+            last_name = name_parts[1] if len(name_parts) > 1 else ""
+            
+            # Map team name to team ID
+            team_id_map = {
+                "New York": "1",
+                "Detroit": "2", 
+                "Chicago": "3",
+                "Boston": "4"
+            }
+            team_id = team_id_map.get(stats['team'], "1")
+            
+            goalie_record = {
+                "id": str(i),
+                "firstName": first_name,
+                "lastName": last_name,
+                "seasons": [
+                    {
+                        "id": "1",
+                        "Team": team_id,
+                        "Position": "G",
+                        "GP": str(stats['gp']),
+                        "GS": str(stats['gp']),  # Games Started = Games Played for goalies
+                        "W": str(stats['w']),
+                        "L": str(stats['l']),
+                        "T": str(stats['t']),
+                        "SO": str(stats['so']),
+                        "GA": str(stats['ga']),
+                        "GAA": f"{stats['gaa']:.2f}"
+                    }
+                ]
+            }
+            
+            formatted.append(goalie_record)
         
         return formatted
 

@@ -2,7 +2,7 @@
 
 ## Google Sheets
 DEFAULT_PLAYER_SPREADSHEET_ID = "16sG5OBgkP4no3dIt2-h8G8uSsK7S-o7-5gWDtHuPG6k"
-DEFAULT_GAME_SPREADSHEET_ID = ""  # To be provided when processing games
+DEFAULT_GAME_SPREADSHEET_ID = "1XUoZxS4rbOJzv47grAqhEOpGcZui7okWJcfaLt7R67Q"  # New game sheet for single game processing
 
 ## Sheet Ranges
 GAMES_RANGE = "games!A2:L55"
