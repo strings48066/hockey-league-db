@@ -6,7 +6,7 @@ import os
 import sys
 from sheets_client import SheetsClient
 from formatters import GameFormatter, PlayerFormatter, StandingsFormatter, GoalieStatsFormatter, OutputManager
-import config
+from config import settings as config
 
 class UHLOpsManager:
     def __init__(self, player_spreadsheet_id=None, game_spreadsheet_id=None):

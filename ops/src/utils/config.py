@@ -23,8 +23,8 @@ GAME_RANGES = {
 # Game events range (from main spreadsheet)
 GAME_EVENTS_RANGE = "gameEvents!A1:P100"
 
-## File Paths
-SERVICE_ACCOUNT_FILE = "service-account-key.json"
+## File Paths (use the parent config)
+from config.settings import SERVICE_ACCOUNT_FILE, GOOGLE_CREDS_FILE, TOKEN_FILE
 
 ## Output Directories
 OUTPUT_DIR = "./output"

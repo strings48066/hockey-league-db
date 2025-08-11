@@ -7,6 +7,9 @@
 echo "🏒 Starting UHL Weekly Update Process..."
 echo "======================================"
 
+# Change to the ops directory (parent of scripts)
+cd "$(dirname "$0")/.."
+
 # Step 1: Clear output folder
 echo "🗑️  Clearing output folder..."
 rm -rf output/*
