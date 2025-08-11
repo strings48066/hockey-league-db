@@ -5,7 +5,7 @@ DEFAULT_PLAYER_SPREADSHEET_ID = "16sG5OBgkP4no3dIt2-h8G8uSsK7S-o7-5gWDtHuPG6k"
 DEFAULT_GAME_SPREADSHEET_ID = "1XUoZxS4rbOJzv47grAqhEOpGcZui7okWJcfaLt7R67Q"  # New game sheet for single game processing
 
 ## Sheet Ranges
-GAMES_RANGE = "games!A2:L55"
+GAMES_RANGE = "games!A2:Z55"  # Expanded to get all possible columns
 PLAYERS_RANGE = "players!A2:C53"  # Fixed to skip header
 PLAYERS_SEASON_RANGE = "players!D2:O53"  # Fixed to skip header
 STANDINGS_RANGE = "standings!A2:L5"

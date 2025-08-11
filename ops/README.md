@@ -10,6 +10,9 @@ This directory contains the **standalone** consolidated operations system for th
 ./run_uhl.sh players                          # Process players only  
 ./run_uhl.sh standings                        # Process standings only
 ./run_uhl.sh all-games                        # Process games schedule
+./run_uhl.sh schedule                         # Generate complete schedule from Google Sheets
+./run_uhl.sh create-schedule                  # Create initial schedule.json from generated CSV
+./run_uhl.sh goalie-stats                     # Calculate goalie statistics from schedule.json
 ./run_uhl.sh single-game <player_id> <game_id>  # Process detailed game data
 ```
 
@@ -69,7 +72,13 @@ GAME_SPREADSHEET_ID=your_game_specific_spreadsheet_id
 
 #### All Games (Schedule)
 - **Input**: Main spreadsheet, range `games!A2:L55`  
-- **Output**: `./output/all_games.json` - Complete games schedule
+- **Output**: `./output/all_games.json` - Complete games schedule (when season is active)
+- **TBD Handling**: `./output/games_status.json` - Season status when data is TBD/planning phase
+- **Season States**: 
+  - `active` - Games scheduled and ready for play
+  - `planning` - Season in planning phase with TBD data
+  - `pending` - Season not yet started
+  - `error` - Data structure issues or processing errors
 
 #### Single Game (Detailed)
 - **Input**: Game-specific spreadsheet with multiple ranges:

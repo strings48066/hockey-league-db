@@ -21,12 +21,91 @@ class GameFormatter:
 
     @staticmethod
     def format_all_games(df):
-        """Format games schedule data from Google Sheets (simple list format)"""
+        """Format games schedule data from Google Sheets (handles TBD data during season startup)"""
         if df.empty:
-            return []
+            return {
+                "message": "No games data found",
+                "status": "no_data",
+                "games": []
+            }
         
-        df.columns = ["SeasonId", "id", "Date", "Time", "Home", "Away", "HomeTeam", "AwayTeam", "HomeScore", "AwayScore", "Ref1", "Ref2"]
-        return df.to_dict(orient='records')
+        # Handle TBD/placeholder data during season startup
+        try:
+            # Expected columns from your structure
+            expected_columns = ["SeasonId", "id", "Date", "Time", "Home", "Away", "HomeTeam", "AwayTeam", "HomeScore", "AwayScore", "Ref1", "Ref2"]
+            
+            # If we have fewer columns than expected, it might be TBD data
+            if len(df.columns) < len(expected_columns):
+                print(f"⚠️  Warning: Found {len(df.columns)} columns, expected {len(expected_columns)}. Likely TBD data.")
+                
+                # Return empty schedule for TBD scenarios
+                return {
+                    "message": "Season not yet started - TBD data detected",
+                    "status": "pending",
+                    "games": []
+                }
+            
+            df.columns = expected_columns
+            
+            # Filter out rows with TBD or empty essential data
+            df_clean = df.dropna(subset=['Date', 'Home', 'Away'])
+            df_clean = df_clean[~df_clean['Date'].astype(str).str.contains('TBD|tbd', case=False, na=False)]
+            
+            if df_clean.empty:
+                return {
+                    "message": "No valid games found - season appears to be in planning phase",
+                    "status": "planning", 
+                    "games": []
+                }
+                
+            return {
+                "message": f"Successfully processed {len(df_clean)} games",
+                "status": "active",
+                "games": df_clean.to_dict(orient='records')
+            }
+            
+        except Exception as e:
+            print(f"⚠️  Error processing games data (likely TBD content): {e}")
+            return {
+                "message": "Unable to process games data - season may not be started",
+                "status": "error",
+                "error": str(e),
+                "games": []
+            }
+    
+    @staticmethod
+    def check_season_status(df):
+        """Check if season is active, planning, or TBD"""
+        if df.empty:
+            return {"status": "no_data", "message": "No schedule data found", "ready_for_play": False}
+        
+        # Count TBD vs actual data
+        tbd_count = 0
+        valid_count = 0
+        
+        for _, row in df.iterrows():
+            row_str = ' '.join(str(val) for val in row.values)
+            if 'TBD' in row_str.upper() or pd.isna(row.iloc[0]) or str(row.iloc[0]).strip() == '':
+                tbd_count += 1
+            else:
+                valid_count += 1
+        
+        if tbd_count > valid_count:
+            return {
+                "status": "planning",
+                "message": f"Season in planning phase ({tbd_count} TBD, {valid_count} scheduled)",
+                "ready_for_play": False,
+                "tbd_count": tbd_count,
+                "valid_count": valid_count
+            }
+        else:
+            return {
+                "status": "active", 
+                "message": f"Season active ({valid_count} games scheduled, {tbd_count} TBD)",
+                "ready_for_play": True,
+                "tbd_count": tbd_count,
+                "valid_count": valid_count
+            }
     
     @staticmethod
     def format_game_events(df):
@@ -349,16 +428,41 @@ class GameFormatter:
 class PlayerFormatter:
     @staticmethod
     def format_players(df):
-        """Format basic player info"""
-        df.columns = ["id", "FirstName", "Lastname"]
-        return df[["id", "FirstName", "Lastname"]].to_dict(orient='records')
+        """Format basic player info with TBD handling"""
+        if df.empty:
+            return []
+        
+        try:
+            if len(df.columns) < 3:
+                print(f"⚠️  Warning: Expected 3 columns for players, got {len(df.columns)}. Likely TBD data.")
+                return []
+            
+            df.columns = ["id", "FirstName", "Lastname"]
+            return df[["id", "FirstName", "Lastname"]].to_dict(orient='records')
+        except Exception as e:
+            print(f"⚠️  Error processing players data: {e}")
+            return []
     
     @staticmethod
     def format_season_stats(df):
-        """Format player season statistics"""
-        df.columns = ["Team", "JerseyNumber", "Position", "GP", "G", "A", "PTS", "PIM", "GWG"]
-        df["id"] = "1"
-        return df.to_dict(orient='records')
+        """Format player season statistics with TBD handling"""
+        if df.empty:
+            return []
+        
+        try:
+            expected_columns = ["Team", "JerseyNumber", "Position", "GP", "G", "A", "PTS", "PIM", "GWG"]
+            
+            if len(df.columns) < len(expected_columns):
+                print(f"⚠️  Warning: Expected {len(expected_columns)} columns for season stats, got {len(df.columns)}. Likely TBD data.")
+                return []
+            
+            df.columns = expected_columns + (df.columns[len(expected_columns):].tolist() if len(df.columns) > len(expected_columns) else [])
+            df["id"] = "1"
+            return df[expected_columns + ["id"]].to_dict(orient='records')
+            
+        except Exception as e:
+            print(f"⚠️  Error processing season stats: {e}")
+            return []
     
     @staticmethod
     def combine_player_data(players, seasons):
