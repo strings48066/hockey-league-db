@@ -246,8 +246,10 @@ class UHLOpsManager:
         # Fetch game events data  
         df_events = self.sheets_client.get_range(config.GAME_EVENTS_RANGE)
         if df_events.empty:
-            print("No game events data found")
-            return None
+            print("No game events data found - schedule will be created with empty goals/penalties")
+            # Create empty dataframe for events processing
+            import pandas as pd
+            df_events = pd.DataFrame()
         
         # Fetch gamesPlayed data for lineups
         df_games_played = None
@@ -353,9 +355,9 @@ class UHLOpsManager:
                     "Time": str(row['Time']),       # Time from sheet
                     "Ref1": str(row.get('Ref1', 'TBD')),     # Ref1 from sheet or TBD
                     "Ref2": str(row.get('Ref2', '')),        # Ref2 from sheet or empty
-                    "GameLink": f"/gameSummary/{int(float(str(row['id']))) - 1}",  # Game link format
+                    "GameLink": str(row.get('GameLink', f"/gameSummary/{int(float(str(row['id']))) - 1}")),  # GameLink from sheet or calculated
                     "Score": str(row.get('Score', '')),      # Score from sheet or empty
-                    "Played": str(row.get('Played', 'N')).upper(),   # Played status from sheet (uppercase)
+                    "Played": str(row.get('Played', 'N')),   # Played status from sheet (preserve case)
                     # Empty structures for future game data
                     "Lineups": {
                         "Home": [],

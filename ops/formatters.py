@@ -267,14 +267,16 @@ class GameFormatter:
                 away_score = str(game_row.iloc[9]) if len(game_row) > 9 else ""
                 ref1 = str(game_row.iloc[10]) if len(game_row) > 10 else ""
                 ref2 = str(game_row.iloc[11]) if len(game_row) > 11 and game_row.iloc[11] else ""
+                gamelink = str(game_row.iloc[14]) if len(game_row) > 14 else ""
+                score = str(game_row.iloc[15]) if len(game_row) > 15 else ""
+                played = str(game_row.iloc[16]) if len(game_row) > 16 else "N"  # Read actual Played field from sheet
                 
-                # Create score string
-                if home_score and away_score and home_score != '' and away_score != '':
-                    score = f"{home_team} {home_score} - {away_score} {away_team}"
-                    played = "Y"
-                else:
-                    score = f"{home_team}  -  {away_team}"
-                    played = "N"
+                # If score field is empty, generate it from team names and scores
+                if not score or score.strip() == '':
+                    if home_score and away_score and home_score != '' and away_score != '':
+                        score = f"{home_team} {home_score} - {away_score} {away_team}"
+                    else:
+                        score = f"{home_team}  -  {away_team}"
                 
                 # Get events for this game
                 game_events = GameFormatter.get_events_for_game(events_df, game_id)
@@ -327,7 +329,7 @@ class GameFormatter:
                     "Time": time,
                     "Ref1": ref1,
                     "Ref2": ref2,
-                    "GameLink": f"/gameSummary/{int(game_id) - 1}",  # GameLink is game_id - 1
+                    "GameLink": gamelink if gamelink else f"/gameSummary/{int(game_id) - 1}",  # Use GameLink from sheet or calculate
                     "Score": score,
                     "Played": played,
                     "Lineups": {
@@ -521,7 +523,7 @@ class GoalieStatsFormatter:
         }))
         
         for game in schedule_data:
-            if game.get('Played') != 'Y':
+            if game.get('Played', '').lower() != 'y':
                 continue
                 
             game_id = game.get('id', '')
